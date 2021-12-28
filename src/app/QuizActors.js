@@ -1,1 +1,0 @@
-const Actors = `<h1>This is quiz 1</h1>`;

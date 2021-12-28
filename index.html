@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Quiz App | CodersCamp 2021</title>
-    <link rel="stylesheet" href="styles/index.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;600&family=Roboto+Slab:wght@200;400&display=swap" rel="stylesheet">
-    <script src="src/app/Home.js"></script>
-    <script src="src/app/QuizActors.js"></script>
-    <script src="src/app/QuizFrames.js"></script>
-    <script src="src/app/QuizSounds.js"></script>
-    <script src="src/app/Results.js"></script>
-</head>
-<body>
+
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;600&family=Roboto+Slab:wght@200;400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header class="navigation-bar">
-        <ul class="logo">
-            <li class="logo-link"><a href="#" onclick="navigate('/'); return false">QUIZ NAME</a></li>
-        </ul>
-        <ul class="navigation-list">
-            <li><a href="#" onclick="navigate('/Actors'); return false">Actors</a></li>
-            <li><a href="#" onclick="navigate('/MovieFrames'); return false">Movie Frames</a></li>
-            <li><a href="#" onclick="navigate('/Soundtracks'); return false">Soundtracks</a></li>
-        </ul>
+      <ul class="logo">
+        <li class="logo-link"><a href="index.html">QUIZ NAME</a></li>
+      </ul>
+      <ul class="navigation-list">
+        <li><a href="actors.html">Actors</a></li>
+        <li><a href="frames.html">Movie Frames</a></li>
+        <li><a href="sounds.html">Soundtracks</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
     </header>
-<div id="root"></div>
-<script src="src/index.js"></script>
-</body>
+    <main>
+      <div class="home-container">
+        <div class="text-content">
+          <h1>Welcome to the MOVIE QUIZ</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa
+          </p>
+        </div>
+        <div class="buttons-container">
+          <button><a href="actors.html">Actors</a></button>
+          <button><a href="frames.html">Movie Frames</a></button>
+          <button><a href="sounds.html">Soundtracks</a></button>
+        </div>
+      </div>
+    </main>
+    <script src="src/index.js"></script>
+  </body>
 </html>
