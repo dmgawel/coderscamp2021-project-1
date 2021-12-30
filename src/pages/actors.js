@@ -1,3 +1,7 @@
+import '../../styles/style.css';
+import '../../styles/actors.css';
+import '../../styles/quizResult.css';
+
 const actorsData = [
   {
     question: 'What is the name of this actor?',
