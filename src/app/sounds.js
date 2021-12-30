@@ -1,3 +1,38 @@
+const counter = (() =>{
+  let timerId;
+  const counterContainer = document.getElementById("counter-container");
+  const counterImgData = [
+    './static/assets/img/soundtracks/7.png',
+    './static/assets/img/soundtracks/6.png',
+    './static/assets/img/soundtracks/5.png',
+    './static/assets/img/soundtracks/4.png',
+    './static/assets/img/soundtracks/3.png',
+    './static/assets/img/soundtracks/2.png',
+    './static/assets/img/soundtracks/1.png',
+  ];
+  let startCount = 0;
+  const next = () => {
+    if(startCount < counterImgData.length - 1){
+      startCount ++;
+    } else {
+      startCount = 0;
+      clearInterval(timerId);
+    }
+    counterContainer.src=counterImgData[startCount];
+  }
+  const start = () => {
+    timerId = setInterval(next, 1000);
+  }
+  const stop = () => {
+    startCount = 0;
+    clearInterval(timerId);
+    counterContainer.src=counterImgData[startCount];
+  }
+  return {
+    start, stop
+  }
+})();
+
 const soundsData = [
   {
     question: 'Do You know what movie is this music from?',
@@ -136,12 +171,22 @@ const a_text = document.getElementById('a-text');
 const b_text = document.getElementById('b-text');
 const c_text = document.getElementById('c-text');
 const d_text = document.getElementById('d-text');
+const playBtn = document.getElementById("soundtrackplay");
 const submitBtn = document.getElementById('submit');
 
+let delayId;
+
+playBtn.addEventListener("click", function() {
+  soundItem.play();
+  delayId = setTimeout(counter.start, 10000);
+});
+
+
+
 // Choosing soundtrack box (button) and appending the soundtrack to it
-const playSoundButton = document.querySelector('.play-button');
-// const soundItem = document.createElement('audio');
-playSoundButton.append(soundItem);
+// const playSoundButton = document.querySelector('.play-button');
+// // const soundItem = document.createElement('audio');
+// playSoundButton.append(soundItem);
 
 let shuffleQuiz = soundsData.sort(() => Math.random() - 0.5);
 
@@ -200,7 +245,7 @@ function deselectInputs() {
   });
 }
 
-submitBtn.addEventListener('click', () => {
+const submitFunction = () => {
   const answer = selectAnswer();
 
   if (answer) {
@@ -210,63 +255,16 @@ submitBtn.addEventListener('click', () => {
 
     currentQuestion++;
 
+    soundItem.pause();
+    counter.stop();
+    clearTimeout(delayId);
+
     if (currentQuestion < soundsData.length) {
       loadQuiz();
     } else {
-      soundItem.pause();
       quiz.innerHTML = `<h2>Your final score is: ${score} / ${soundsData.length}</h2><button onClick="location.reload()">Reload</button>`;
     }
   }
-});
-
-// Countdown
-
-let startCount = 0;
-const counterImgData = [
-  './static/assets/img/soundtracks/7.png',
-  './static/assets/img/soundtracks/6.png',
-  './static/assets/img/soundtracks/5.png',
-  './static/assets/img/soundtracks/4.png',
-  './static/assets/img/soundtracks/3.png',
-  './static/assets/img/soundtracks/2.png',
-  './static/assets/img/soundtracks/1.png',
-];
-
-function setTimer() {
-  setInterval(imgCounter, 1000);
 }
 
-function imgCounter() {
-  let imgData = undefined;
-
-  switch (startCount) {
-    case 1:
-      imgData = counterImgData[0];
-      break;
-    case 2:
-      imgData = counterImgData[1];
-      break;
-    case 3:
-      imgData = counterImgData[2];
-      break;
-    case 4:
-      imgData = counterImgData[3];
-      break;
-    case 5:
-      imgData = counterImgData[4];
-      break;
-    case 6:
-      imgData = counterImgData[5];
-      break;
-    case 7:
-      imgData = counterImgData[6];
-      break;
-    default:
-      imgData = counterImgData[0];
-  }
-
-  document.getElementById('count').src = `${imgData}`;
-  startCount++;
-}
-
-setTimer();
+submitBtn.addEventListener('click', submitFunction);

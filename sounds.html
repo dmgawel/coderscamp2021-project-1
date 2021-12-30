@@ -8,6 +8,8 @@
   <title>Actors Quiz</title>
   <link rel="stylesheet" href="styles/index.css" />
   <link rel="stylesheet" href="styles/end.css" />
+  <link rel="stylesheet" href="styles/movieFrameStyling.css" />
+  <link rel="stylesheet" href="styles/soundtracksStyling.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -40,12 +42,12 @@
           <!-- <img src="./static/assets/img/soundtracks/nuta.png" id="nuta"> -->
           <div class="play-button">
             <audio id="sound" src="" preload="auto"></audio>
-            <button id="soundtrackplay" onclick="document.getElementById('sound').play()">
+            <button id="soundtrackplay">
               PLAY Soundtrack
             </button>
           </div>
         </div>
-        <ul>
+        <ul id="answerbuttons">
           <li>
             <input type="radio" name="answer" id="a" class="answer" />
             <label id="a-text" for="a"></label>
@@ -64,14 +66,14 @@
           </li>
         </ul>
         <div class="image-count">
-          <img src="./static/assets/img/soundtracks/7.png" id="count" />
+          <img src="./static/assets/img/soundtracks/7.png" id="counter-container" />
         </div>
       </div>
-      <button id="submit">Submit proba2 fdfsdf</button>
+      <button id="submit">Submit</button>
     </div>
   </main>
 </body>
-<script src="/src/app/sounds.js"></script>
+<script src="./src/app/sounds.js"></script>
 <script src="./src/index.js"></script>
 
 </html>
