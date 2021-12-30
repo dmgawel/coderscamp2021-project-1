@@ -261,3 +261,36 @@ submitBtn.addEventListener('click', () => {
     }
   }
 });
+
+/*
+  TIMER
+*/
+// 7 images of film plates
+let COUNTER = 7;
+
+// variable for clearing setInterval()
+let interval;
+
+function timer() {
+  interval = setInterval(changeTimerImage, 1000);
+}
+
+function changeTimerImage() {
+  let imageSrc = document.getElementById('timer-image').src;
+  const index = imageSrc.lastIndexOf('.png');
+
+  if (COUNTER > 0) {
+    // replacing the number in the image "src" string
+    let imageSrcText = imageSrc.substring(0, index - 1) + COUNTER + imageSrc.substring(index);
+
+    // replacing image "src" attribute with a new value
+    document.getElementById('timer-image').src = imageSrcText;
+
+    COUNTER--;
+  } else {
+    console.log('Next question!');
+    clearInterval(interval);
+  }
+}
+
+timer();
