@@ -1,8 +1,24 @@
-import 'regenerator-runtime/runtime' //async/await with Parcel
-import {App} from "./app/App";
 
-const ONE_SECOND_MILLIS = 1000;
-const SW_API_BASE_URL = process.env.SW_API_BASE_URL || "https://swapi.dev/api";
-const QUIZ_MAX_TIME = process.env.QUIZ_MAX_TIME_SECONDS ? process.env.QUIZ_MAX_TIME_SECONDS * ONE_SECOND_MILLIS : 120 * ONE_SECOND_MILLIS;
+const routes = {
+    '/': Home,
+    '/Actors': Actors,
+    '/MovieFrames': Frames,
+    '/Soundtracks': Sounds,
+    '/Results': Results
+}
 
-window.onload = () => App({options: {swApiBaseUrl: SW_API_BASE_URL, quizMaxTime: QUIZ_MAX_TIME}})
+const rootDiv = document.getElementById('root');
+rootDiv.innerHTML = routes[window.location.pathname];
+
+// method to render content according to pathname
+const navigate = (pathname) => {
+    window.history.pushState({}, pathname, window.location.origin + pathname);
+    rootDiv.innerHTML = routes[pathname];
+
+}
+
+window.onpopstate = () => {
+rootDiv.innerHTML = routes[window.location.pathname];
+}
+
+
