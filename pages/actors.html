@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Quiz</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/quizResult.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;600&family=Roboto+Slab:wght@200;400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <nav class="menu">
+      <div class="logo"><a href="../index.html">MOVIE QUIZ</a></div>
+      <ul class="nav-list">
+        <li><a href="/pages/actors.html">Actors</a></li>
+        <li><a href="/pages/frames.html">Movie Frames</a></li>
+        <li><a href="/pages/sounds.html">Soundtracks</a></li>
+      </ul>
+    </nav>
+    <main>
+      <div id="quiz" class="quiz-container">
+        <div class="actor-container">
+          <div class="actor-image"></div>
+        </div>
+        <div class="content-container">
+          <h2 id="question">Question text</h2>
+          <ul class="answers">
+            <li>
+              <input type="radio" name="answer" id="a" class="answer" />
+              <label id="a-text" for="a"></label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="b" class="answer" />
+              <label id="b-text" for="b"></label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="c" class="answer" />
+              <label id="c-text" for="c"></label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="d" class="answer" />
+              <label id="d-text" for="d"></label>
+            </li>
+          </ul>
+        </div>
+        <button id="submit">Submit</button>
+      </div>
+    </main>
+    <script type="module" src="../src/pages/actors.js"></script>
+  </body>
+</html>

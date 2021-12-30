@@ -1,3 +1,6 @@
+@import './actors.css';
+@import './quizResult.css';
+
 body {
   font-family: 'Roboto Slab', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -13,8 +16,8 @@ a {
   text-decoration: none;
   padding: 10px;
   text-transform: uppercase;
-  color: #ffffff;
   cursor: pointer;
+  color: #ffffff;
 }
 
 /* NAVIGATION BAR */
@@ -29,6 +32,12 @@ a {
   border-bottom: 2px solid #ffd600;
   color: #ffd600;
   padding: 10px;
+}
+
+.logo a {
+  color: #ffd600;
+  font-weight: 600;
+  font-size: 2rem;
 }
 
 .nav-list {
