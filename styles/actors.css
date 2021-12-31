@@ -1,0 +1,37 @@
+/* ACTORS QUIZ */
+
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  max-width: 70%;
+}
+
+.answers {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.answers > li {
+  padding: 10px;
+}
+
+.quiz-container > button {
+  margin: 10px;
+  background-color: transparent;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #ffd600;
+  border: 2px solid #ffd600;
+  cursor: pointer;
+}
+
+.actor-image > img {
+  width: 50%;
+  border-radius: 10px;
+}
