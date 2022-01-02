@@ -31,7 +31,13 @@
   cursor: pointer;
 }
 
+.actor-container {
+  display: flex;
+}
+
 .actor-image > img {
-  width: 50%;
   border-radius: 10px;
+  max-width: 256px;
+  height: auto;
+  width: 100%;
 }

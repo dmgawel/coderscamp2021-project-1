@@ -171,6 +171,7 @@ let score = 0;
 window.setTimeout(loadQuiz, 150);
 
 function loadQuiz() {
+  timer();
   deselectInputs();
 
   const currentQuizData = actorsData[currentQuestion];
@@ -211,20 +212,33 @@ function deselectInputs() {
   });
 }
 
-submitBtn.addEventListener('click', () => {
+function scorceHandler() {
+  const facebookBtn = document.querySelector('.facebook-btn');
+  const twitterBtn = document.querySelector('.twitter-btn');
+
+  const postUrl = encodeURI(document.location.href);
+  const postTitle = encodeURI(
+    `Hello everyone! I have scored ${score}/${actorsData.length} points! Check out this quiz: `
+  );
+
+  facebookBtn.setAttribute('href', `https://www.facebook.com/sharer.php?u=${postUrl}`);
+
+  twitterBtn.setAttribute('href', `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
+}
+
+function nextQuestionHandler() {
   const answer = selectAnswer();
 
-  if (answer) {
-    if (answer === actorsData[currentQuestion].correct) {
-      score++;
-    }
+  if (answer === actorsData[currentQuestion].correct) {
+    score++;
+  }
 
-    currentQuestion++;
+  currentQuestion++;
 
-    if (currentQuestion < actorsData.length) {
-      loadQuiz();
-    } else {
-      quiz.innerHTML = `<div class="container-end">
+  if (currentQuestion < actorsData.length) {
+    loadQuiz();
+  } else {
+    quiz.innerHTML = `<div class="container-end">
       <div class="table-score">
       <div>
       <h1>Your final score is: ${score} / ${actorsData.length}</h1>
@@ -243,54 +257,55 @@ submitBtn.addEventListener('click', () => {
       </div>
    </div>`;
 
-      function init() {
-        const facebookBtn = document.querySelector('.facebook-btn');
-        const twitterBtn = document.querySelector('.twitter-btn');
-
-        const postUrl = encodeURI(document.location.href);
-        const postTitle = encodeURI(
-          `Hello everyone! I have scored ${score}/${actorsData.length} points! Check out this quiz: `
-        );
-
-        facebookBtn.setAttribute('href', `https://www.facebook.com/sharer.php?u=${postUrl}`);
-
-        twitterBtn.setAttribute('href', `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
-      }
-
-      init();
-    }
+    scorceHandler();
   }
-});
+}
+
+submitBtn.addEventListener('click', nextQuestionHandler);
 
 /*
   TIMER
 */
 // 7 images of film plates
-let COUNTER = 7;
+const TIMER_START_VALUE = 10;
+let counter = TIMER_START_VALUE;
 
 // variable for clearing setInterval()
 let interval;
 
 function timer() {
-  interval = setInterval(changeTimerImage, 1000);
+  if (interval) {
+    counter = TIMER_START_VALUE;
+    clearInterval(interval);
+    changeTimerImage();
+    interval = setInterval(changeTimerImage, 1000);
+  } else {
+    changeTimerImage();
+    interval = setInterval(changeTimerImage, 1000);
+  }
 }
 
 function changeTimerImage() {
   let imageSrc = document.getElementById('timer-image').src;
+  // const index = imageSrc.lastIndexOf('.png');
   const index = imageSrc.lastIndexOf('.png');
 
-  if (COUNTER > 0) {
+  if (counter >= 0) {
     // replacing the number in the image "src" string
-    let imageSrcText = imageSrc.substring(0, index - 1) + COUNTER + imageSrc.substring(index);
+    let imageSrcText = window.location.origin + '/assets/timer/' + counter + '.png';
 
     // replacing image "src" attribute with a new value
     document.getElementById('timer-image').src = imageSrcText;
 
-    COUNTER--;
+    counter--;
+
+    if (counter) {
+      submitBtn.removeAttribute('disabled');
+    } else {
+      submitBtn.setAttribute('disabled', 'disabled');
+    }
   } else {
-    console.log('Next question!');
     clearInterval(interval);
+    nextQuestionHandler();
   }
 }
-
-timer();
