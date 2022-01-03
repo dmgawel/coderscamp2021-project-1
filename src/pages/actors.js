@@ -171,7 +171,40 @@ submitBtn.addEventListener('click', () => {
     if (currentQuestion < actorsData.length) {
       loadQuiz();
     } else {
-      quiz.innerHTML = `<h2> Your final score is ${score}/${actorsData.length}</h2> <button onClick="location.reload()">Reload</button>`;
+      quiz.innerHTML = `<div class="container-end">
+      <div class="table-score">
+      <div>
+      <h1>Your final score is: ${score} / ${actorsData.length}</h1> 
+          <div class="buttons-container-end">
+              <button><a href="../index.html" class="btn">Go Home</a></button>
+              <h2>Share your score:</h2>
+              <div class="share-btn-container">
+                <a href="#" target="_blank" class="facebook-btn">
+                  <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" target="_blank" class="twitter-btn">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+          </div>
+      </div>
+   </div>`;
+
+      function init() {
+        const facebookBtn = document.querySelector('.facebook-btn');
+        const twitterBtn = document.querySelector('.twitter-btn');
+
+        let postUrl = encodeURI(document.location.href);
+        let postTitle = encodeURI(
+          `Hello everyone! I have scored ${score}/${actorsData.length} points! Check out this quiz: `
+        );
+
+        facebookBtn.setAttribute('href', `https://www.facebook.com/sharer.php?u=${postUrl}`);
+
+        twitterBtn.setAttribute('href', `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
+      }
+
+      init();
     }
   }
 });
