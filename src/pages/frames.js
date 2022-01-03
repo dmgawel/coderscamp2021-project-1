@@ -199,6 +199,7 @@ function deselectInputs() {
 }
 
 function loadQuiz() {
+  timer();
   deselectInputs();
 
   const currentQuizData = actorsData[currentQuestion];
@@ -243,22 +244,70 @@ function selectAnswer() {
   return answer;
 }
 
-submitBtn.addEventListener('click', () => {
+function nextQuestionHandler() {
   const answer = selectAnswer();
 
-  if (answer) {
-    if (answer === actorsData[currentQuestion].correct) {
-      // eslint-disable-next-line no-plusplus
-      score++;
-    }
-
+  if (answer === actorsData[currentQuestion].correct) {
     // eslint-disable-next-line no-plusplus
-    currentQuestion++;
-
-    if (currentQuestion < actorsData.length) {
-      loadQuiz();
-    } else {
-      quiz.innerHTML = `<h2>Your final score is: ${score} / ${actorsData.length}</h2><button onClick="location.reload()">Reload</button>`;
-    }
+    score++;
   }
-});
+
+  // eslint-disable-next-line no-plusplus
+  currentQuestion++;
+
+  if (currentQuestion < actorsData.length) {
+    loadQuiz();
+  } else {
+    clearInterval(interval);
+    quiz.innerHTML = `<h2>Your final score is: ${score} / ${actorsData.length}</h2><button onClick="location.reload()">Reload</button>`;
+  }
+}
+
+submitBtn.addEventListener('click', nextQuestionHandler);
+
+/*
+  TIMER
+*/
+// 7 images of film plates
+const TIMER_START_VALUE = 10;
+let counter = TIMER_START_VALUE;
+
+// variable for clearing setInterval()
+let interval;
+
+function timer() {
+  if (interval) {
+    counter = TIMER_START_VALUE;
+    clearInterval(interval);
+    changeTimerImage();
+    interval = setInterval(changeTimerImage, 1000);
+  } else {
+    changeTimerImage();
+    interval = setInterval(changeTimerImage, 1000);
+  }
+}
+
+function changeTimerImage() {
+  let imageSrc = document.getElementById('timer-image').src;
+  // const index = imageSrc.lastIndexOf('.png');
+  const index = imageSrc.lastIndexOf('.png');
+
+  if (counter >= 0) {
+    // replacing the number in the image "src" string
+    let imageSrcText = window.location.origin + '/assets/timer/' + counter + '.png';
+
+    // replacing image "src" attribute with a new value
+    document.getElementById('timer-image').src = imageSrcText;
+
+    counter--;
+
+    if (counter) {
+      submitBtn.removeAttribute('disabled');
+    } else {
+      submitBtn.setAttribute('disabled', 'disabled');
+    }
+  } else {
+    clearInterval(interval);
+    nextQuestionHandler();
+  }
+}
