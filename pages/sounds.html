@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,61 +8,61 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;600&family=Roboto+Slab:wght@200;400&display=swap"
-        rel="stylesheet" />
-</head>
-
-<body>
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;600&family=Roboto+Slab:wght@200;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  </head>
+  <body>
     <nav class="menu">
-        <div class="logo"><a href="../index.html">MOVIE QUIZ</a></div>
-        <ul class="nav-list">
-            <li><a href="/pages/actors.html">Actors</a></li>
-            <li><a href="/pages/frames.html">Movie Frames</a></li>
-            <li><a href="/pages/sounds.html">Soundtracks</a></li>
-        </ul>
+      <div class="logo"><a href="../index.html">MOVIE QUIZ</a></div>
+      <ul class="nav-list">
+        <li><a href="/pages/actors.html">Actors</a></li>
+        <li><a href="/pages/frames.html">Movie Frames</a></li>
+        <li><a href="/pages/sounds.html">Soundtracks</a></li>
+      </ul>
     </nav>
     <main>
-        <div id="quiz" class="quiz-container">
-            <div class="content-container">
-                <h2 id="question">Question text</h2>
-                <h4>Please make sure your answer is correct and click "SUBMIT".
-                    <br>Otherwise your score for the question will be 0 ! &#128540;</h4>
-                <div class="media-container">
-                    <!-- <img src="./static/assets/img/soundtracks/nuta.png" id="nuta"> -->
-                    <div class="play-button">
-                        <audio id="sound" src="" preload="auto"></audio>
-                        <button id="soundtrackplay">
-                            PLAY Soundtrack
-                        </button>
-                    </div>
-                </div>
-                <ul id="answerbuttons">
-                    <li>
-                        <input type="radio" name="answer" id="a" class="answer" />
-                        <label id="a-text" for="a"></label>
-                    </li>
-                    <li>
-                        <input type="radio" name="answer" id="b" class="answer" />
-                        <label id="b-text" for="b"></label>
-                    </li>
-                    <li>
-                        <input type="radio" name="answer" id="c" class="answer" />
-                        <label id="c-text" for="c"></label>
-                    </li>
-                    <li>
-                        <input type="radio" name="answer" id="d" class="answer" />
-                        <label id="d-text" for="d"></label>
-                    </li>
-                </ul>
-                <div class="image-count">
-                    <img src="../assets/images/soundtracks/7.png" id="counter-container" />
-                </div>
+      <div id="quiz" class="quiz-container">
+        <div class="content-container">
+          <h2 id="question">Question text</h2>
+          <h4>
+            Please make sure your answer is correct and click "SUBMIT". <br />Otherwise your score for the question will
+            be 0 ! &#128540;
+          </h4>
+          <div class="media-container">
+            <!-- <img src="./static/assets/img/soundtracks/nuta.png" id="nuta"> -->
+            <div class="play-button">
+              <audio id="sound" src="" preload="auto"></audio>
+              <button id="soundtrackplay">PLAY Soundtrack</button>
             </div>
-            <button id="submit">Submit</button>
+          </div>
+          <ul id="answerbuttons">
+            <li>
+              <input type="radio" name="answer" id="a" class="answer" />
+              <label id="a-text" for="a"></label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="b" class="answer" />
+              <label id="b-text" for="b"></label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="c" class="answer" />
+              <label id="c-text" for="c"></label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="d" class="answer" />
+              <label id="d-text" for="d"></label>
+            </li>
+          </ul>
+          <div class="image-count">
+            <img src="../assets/images/soundtracks/7.png" id="counter-container" />
+          </div>
         </div>
+        <button id="submit">Submit</button>
+      </div>
     </main>
     <script type="module" src="../src/pages/sounds.js"></script>
-</body>
-<script src="./src/index.js"></script>
-
+  </body>
+  <script src="./src/index.js"></script>
 </html>
