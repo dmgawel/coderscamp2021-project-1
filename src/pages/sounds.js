@@ -268,12 +268,6 @@ window.setTimeout(loadQuiz, 150);
     return answer;
   };
   
-function deselectInputs() {
-  answerElements.forEach((answerEl) => {
-    answerEl.checked = false;
-  });
-};
-  
 const submitFunction = () => {
   const answer = selectAnswer();
   if (answer) {
