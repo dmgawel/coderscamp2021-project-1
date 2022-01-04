@@ -29,7 +29,7 @@ Po wstępnym rozpoznaniu i analizie zagadnienia podjęto decyzję o przygotowani
 2. kadr filmowy,
 3. ścieżka dźwiękowa.
 
-Powstała aplikacja to aplikacja webowa działająca w przeglądarce, bez potrzeby instalacji, wraz z wersją responsywną. W celu zaprezentowania działania, aplikacja jest możliwa do odwiedzenia w internecie.
+Powstała aplikacja to aplikacja webowa działająca w przeglądarce, bez potrzeby instalacji, wraz z wersją responsywną. W celu zaprezentowania działania, aplikacja jest możliwa do odwiedzenia w Internecie.
 
 Stworzony w Figmie mock-up oraz prototyp interfejsu Użytkownika (https://www.figma.com/file/iyzc2xne2Y2Sewyb5nPtRt/CodersCamp-prj1?node-id=13%3A141) został zaprezentowany Klientowi i uzyskał Jego akceptację.
 
@@ -43,7 +43,7 @@ Klient dostarczył zespołowi listę funkcjonalności:
 - **Movie frames** - pokazuje się kadr z filmu oraz lista 4 odpowiedzi (tytuł filmu), spośród których tylko jedna jest prawidłowa;
 - **Soundtracks** - pokazuje się lista 4 odpowiedzi (tytuł filmu), spośród których tylko jedna jest prawidłowa. Użytkownik ma możliwość odsłuchania 10-sekundowego przykładu muzycznego (ścieżki dźwiękowej z filmu) oraz wyboru odpowiedzi z listy.
 
-3. Czas na udzielenie odpowiedzi w każdym trybie quizu jest odmierzany za pomocą zmieniających się zobrazowanych klatek taśmy filmowej i wynosi 7 sekund, przy czym w trybie Soundtracks czas na udzielenie odpowiedzi liczony jest dopiero od momentu zakończenia odsłuchiwania przykładu muzycznego.
+3. Czas na udzielenie odpowiedzi w każdym trybie quizu jest odmierzany za pomocą zmieniających się zobrazowanych klatek taśmy filmowej i wynosi 10 sekund, przy czym w trybie Soundtracks czas na udzielenie odpowiedzi liczony jest dopiero od momentu zakończenia odsłuchiwania przykładu muzycznego.
 
 4. Zatwierdzenie prawidłowej odpowiedzi w wyznaczonym czasie skutkuje przyznaniem 1 punktu (per-analogiam zatwierdzenie nieprawidłowej odpowiedzi - 0 punktów).
 
@@ -67,4 +67,11 @@ Aplikacja została wykonana wg dostarczonych przez organizatorów CodersCamp wym
 - HTML, do definiowania struktury aplikacji,
 - Fetch, do łączenia z API.
 
-**IV. Link do działającego DEMO:** https://coderscamp-movie-quiz.netlify.app/
+**IV. Uruchomienie projektu**
+
+Aby uruchomić aplikację na lokalnej maszynie, wykonaj następujące kroki:
+
+1. Zainstaluj zależności za pomocą komendy: `npm install`
+2. Wystartuj serwer developerski `npm run dev`
+
+**V. Link do działającego DEMO:** https://coderscamp-movie-quiz.netlify.app/
