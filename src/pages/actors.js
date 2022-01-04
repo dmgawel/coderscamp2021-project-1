@@ -2,7 +2,7 @@ import '../../styles/style.css';
 import '../../styles/actors.css';
 import '../../styles/quizResult.css';
 
-const actorsData = [
+export const actorsData = [
   {
     question: 'What is the name of this actor?',
     a: 'Tom Dillon',
@@ -104,28 +104,43 @@ const actorsData = [
   },
 ];
 
-// QUIZ Logics & Grab all the elements
+// // QUIZ Logics & Grab all the elements
 
-const quiz = document.getElementById('quiz');
-const questionElement = document.getElementById('question');
-const answerElements = document.querySelectorAll('.answer');
-const a_text = document.getElementById('a-text');
-const b_text = document.getElementById('b-text');
-const c_text = document.getElementById('c-text');
-const d_text = document.getElementById('d-text');
-const submitBtn = document.getElementById('submit');
+// const quiz = document.getElementById('quiz');
+// const questionElement = document.getElementById('question');
+// const answerElements = document.querySelectorAll('.answer');
+// const a_text = document.getElementById('a-text');
+// const b_text = document.getElementById('b-text');
+// const c_text = document.getElementById('c-text');
+// const d_text = document.getElementById('d-text');
+// const submitBtn = document.getElementById('submit');
 
-const actorImgContainer = document.querySelector('.actor-image');
-const actorImg = document.createElement('img');
-actorImgContainer.append(actorImg);
+// const actorImgContainer = document.querySelector('.actor-image');
+// const actorImg = document.createElement('img');
+// actorImgContainer.append(actorImg);
 
-let shuffleQuiz = actorsData.sort(() => Math.random() - 0.5);
+// let shuffleQuiz = actorsData.sort(() => Math.random() - 0.5);
 
-let currentQuestion = 0;
-let score = 0;
+// let currentQuestion = 0;
+// let score = 0;
 
-// Loading quiz with a little delay, so the API with movie names can be fetched.
-window.setTimeout(loadQuiz, 150);
+// // Loading quiz with a little delay, so the API with movie names can be fetched.
+// window.setTimeout(loadQuiz, 150);
+
+// // function loadQuiz() {
+// //   timer();
+// //   deselectInputs();
+
+// //   const currentQuizData = actorsData[currentQuestion];
+
+// //   actorImg.src = currentQuizData.imgSource;
+// //   questionElement.innerHTML = currentQuizData.question;
+// //   questionElement.innerHTML = currentQuizData.question;
+// //   a_text.innerHTML = currentQuizData.a;
+// //   b_text.innerHTML = currentQuizData.b;
+// //   c_text.innerHTML = currentQuizData.c;
+// //   d_text.innerHTML = currentQuizData.d;
+// // }
 
 // function loadQuiz() {
 //   timer();
@@ -133,159 +148,144 @@ window.setTimeout(loadQuiz, 150);
 
 //   const currentQuizData = actorsData[currentQuestion];
 
+//   // Adding source to image on the page
 //   actorImg.src = currentQuizData.imgSource;
 //   questionElement.innerHTML = currentQuizData.question;
-//   questionElement.innerHTML = currentQuizData.question;
-//   a_text.innerHTML = currentQuizData.a;
-//   b_text.innerHTML = currentQuizData.b;
-//   c_text.innerHTML = currentQuizData.c;
-//   d_text.innerHTML = currentQuizData.d;
+
+//   // Making a, b, c, d options display as the correct answer or random wrong answer + making sure that displayed names are not repeating
+//   a_text.innerHTML = currentQuizData.a || wrongAnswers[Math.floor(Math.random() * 91)];
+//   do {
+//     b_text.innerHTML = currentQuizData.b || wrongAnswers[Math.floor(Math.random() * 91)];
+//   } while (b_text.innerHTML === a_text.innerHTML);
+//   do {
+//     c_text.innerHTML = currentQuizData.c || wrongAnswers[Math.floor(Math.random() * 91)];
+//   } while (c_text.innerHTML === a_text.innerHTML || c_text.innerHTML === b_text.innerHTML);
+//   do {
+//     d_text.innerHTML = currentQuizData.d || wrongAnswers[Math.floor(Math.random() * 91)];
+//   } while (
+//     d_text.innerHTML === a_text.innerHTML ||
+//     d_text.innerHTML === b_text.innerHTML ||
+//     d_text.innerHTML === c_text.innerHTML
+//   );
+//   // Randomizing order of ABCD answers
+//   for (let i = ul.children.length; i >= 0; i--) {
+//     // eslint-disable-next-line no-bitwise
+//     ul.appendChild(ul.children[(Math.random() * i) | 0]);
+//   }
 // }
 
-function loadQuiz() {
-  timer();
-  deselectInputs();
+// function selectAnswer() {
+//   let answer = undefined;
 
-  const currentQuizData = actorsData[currentQuestion];
+//   answerElements.forEach((answerEl) => {
+//     if (answerEl.checked) {
+//       answer = answerEl.id;
+//     }
+//   });
+//   return answer;
+// }
 
-  // Adding source to image on the page
-  actorImg.src = currentQuizData.imgSource;
-  questionElement.innerHTML = currentQuizData.question;
+// function deselectInputs() {
+//   answerElements.forEach((answerEl) => {
+//     answerEl.checked = false;
+//   });
+// }
 
-  // Making a, b, c, d options display as the correct answer or random wrong answer + making sure that displayed names are not repeating
-  a_text.innerHTML = currentQuizData.a || wrongAnswers[Math.floor(Math.random() * 91)];
-  do {
-    b_text.innerHTML = currentQuizData.b || wrongAnswers[Math.floor(Math.random() * 91)];
-  } while (b_text.innerHTML === a_text.innerHTML);
-  do {
-    c_text.innerHTML = currentQuizData.c || wrongAnswers[Math.floor(Math.random() * 91)];
-  } while (c_text.innerHTML === a_text.innerHTML || c_text.innerHTML === b_text.innerHTML);
-  do {
-    d_text.innerHTML = currentQuizData.d || wrongAnswers[Math.floor(Math.random() * 91)];
-  } while (
-    d_text.innerHTML === a_text.innerHTML ||
-    d_text.innerHTML === b_text.innerHTML ||
-    d_text.innerHTML === c_text.innerHTML
-  );
-  // Randomizing order of ABCD answers
-  for (let i = ul.children.length; i >= 0; i--) {
-    // eslint-disable-next-line no-bitwise
-    ul.appendChild(ul.children[(Math.random() * i) | 0]);
-  }
-}
+// function nextQuestionHandler() {
+//   const answer = selectAnswer();
 
-function selectAnswer() {
-  let answer = undefined;
+//   if (answer === actorsData[currentQuestion].correct) {
+//     score++;
+//   }
 
-  answerElements.forEach((answerEl) => {
-    if (answerEl.checked) {
-      answer = answerEl.id;
-    }
-  });
-  return answer;
-}
+//   currentQuestion++;
 
-function deselectInputs() {
-  answerElements.forEach((answerEl) => {
-    answerEl.checked = false;
-  });
-}
+//   if (currentQuestion < actorsData.length) {
+//     loadQuiz();
+//   } else {
+//     clearInterval(interval);
+//     quiz.innerHTML = `<div class="container-end">
+//       <div class="table-score">
+//       <div>
+//       <h1>Your final score is: ${score} / ${actorsData.length}</h1>
+//           <div class="buttons-container-end">
+//               <button><a href="../index.html" class="btn">Go Home</a></button>
+//               <h2>Share your score:</h2>
+//               <div class="share-btn-container">
+//                 <a href="#" target="_blank" class="facebook-btn">
+//                   <i class="fab fa-facebook"></i>
+//                 </a>
+//                 <a href="#" target="_blank" class="twitter-btn">
+//                   <i class="fab fa-twitter"></i>
+//                 </a>
+//               </div>
+//           </div>
+//       </div>
+//    </div>`;
 
-function nextQuestionHandler() {
-  const answer = selectAnswer();
+//     function init() {
+//       const facebookBtn = document.querySelector('.facebook-btn');
+//       const twitterBtn = document.querySelector('.twitter-btn');
 
-  if (answer === actorsData[currentQuestion].correct) {
-    score++;
-  }
+//       let postUrl = encodeURI(document.location.href);
+//       let postTitle = encodeURI(
+//         `Hello everyone! I have scored ${score}/${actorsData.length} points! Check out this quiz: `
+//       );
 
-  currentQuestion++;
+//       facebookBtn.setAttribute('href', `https://www.facebook.com/sharer.php?u=${postUrl}`);
 
-  if (currentQuestion < actorsData.length) {
-    loadQuiz();
-  } else {
-    clearInterval(interval);
-    quiz.innerHTML = `<div class="container-end">
-      <div class="table-score">
-      <div>
-      <h1>Your final score is: ${score} / ${actorsData.length}</h1> 
-          <div class="buttons-container-end">
-              <button><a href="../index.html" class="btn">Go Home</a></button>
-              <h2>Share your score:</h2>
-              <div class="share-btn-container">
-                <a href="#" target="_blank" class="facebook-btn">
-                  <i class="fab fa-facebook"></i>
-                </a>
-                <a href="#" target="_blank" class="twitter-btn">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </div>
-          </div>
-      </div>
-   </div>`;
+//       twitterBtn.setAttribute('href', `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
+//     }
 
-    function init() {
-      const facebookBtn = document.querySelector('.facebook-btn');
-      const twitterBtn = document.querySelector('.twitter-btn');
+//     init();
+//   }
+// }
 
-      let postUrl = encodeURI(document.location.href);
-      let postTitle = encodeURI(
-        `Hello everyone! I have scored ${score}/${actorsData.length} points! Check out this quiz: `
-      );
+// submitBtn.addEventListener('click', nextQuestionHandler);
 
-      facebookBtn.setAttribute('href', `https://www.facebook.com/sharer.php?u=${postUrl}`);
+// /*
+//   TIMER
+// */
+// // 7 images of film plates
+// const TIMER_START_VALUE = 10;
+// let counter = TIMER_START_VALUE;
 
-      twitterBtn.setAttribute('href', `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
-    }
+// // variable for clearing setInterval()
+// let interval;
 
-    init();
-  }
-}
+// function timer() {
+//   if (interval) {
+//     counter = TIMER_START_VALUE;
+//     clearInterval(interval);
+//     changeTimerImage();
+//     interval = setInterval(changeTimerImage, 1000);
+//   } else {
+//     changeTimerImage();
+//     interval = setInterval(changeTimerImage, 1000);
+//   }
+// }
 
-submitBtn.addEventListener('click', nextQuestionHandler);
+// function changeTimerImage() {
+//   let imageSrc = document.getElementById('timer-image').src;
+//   // const index = imageSrc.lastIndexOf('.png');
+//   const index = imageSrc.lastIndexOf('.png');
 
-/*
-  TIMER
-*/
-// 7 images of film plates
-const TIMER_START_VALUE = 10;
-let counter = TIMER_START_VALUE;
+//   if (counter >= 0) {
+//     // replacing the number in the image "src" string
+//     let imageSrcText = window.location.origin + '/assets/timer/' + counter + '.png';
 
-// variable for clearing setInterval()
-let interval;
+//     // replacing image "src" attribute with a new value
+//     document.getElementById('timer-image').src = imageSrcText;
 
-function timer() {
-  if (interval) {
-    counter = TIMER_START_VALUE;
-    clearInterval(interval);
-    changeTimerImage();
-    interval = setInterval(changeTimerImage, 1000);
-  } else {
-    changeTimerImage();
-    interval = setInterval(changeTimerImage, 1000);
-  }
-}
+//     counter--;
 
-function changeTimerImage() {
-  let imageSrc = document.getElementById('timer-image').src;
-  // const index = imageSrc.lastIndexOf('.png');
-  const index = imageSrc.lastIndexOf('.png');
-
-  if (counter >= 0) {
-    // replacing the number in the image "src" string
-    let imageSrcText = window.location.origin + '/assets/timer/' + counter + '.png';
-
-    // replacing image "src" attribute with a new value
-    document.getElementById('timer-image').src = imageSrcText;
-
-    counter--;
-
-    if (counter) {
-      submitBtn.removeAttribute('disabled');
-    } else {
-      submitBtn.setAttribute('disabled', 'disabled');
-    }
-  } else {
-    clearInterval(interval);
-    nextQuestionHandler();
-  }
-}
+//     if (counter) {
+//       submitBtn.removeAttribute('disabled');
+//     } else {
+//       submitBtn.setAttribute('disabled', 'disabled');
+//     }
+//   } else {
+//     clearInterval(interval);
+//     nextQuestionHandler();
+//   }
+// }
