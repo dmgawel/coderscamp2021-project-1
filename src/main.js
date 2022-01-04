@@ -9,71 +9,54 @@ import '../styles/actors.css';
 import '../styles/quizResult.css';
 import '../styles/movieFrameStyling.css';
 
+import shuffleArray from './modules/shuffleArray';
+
 import { actorsData } from './pages/actors';
 import { movieFramesData } from './pages/frames';
 
 // Hamburger navigation
-const navSlide = () => {
-  const burger = document.querySelector('.burger');
-  const nav = document.querySelector('.navigation-list');
-  const navLinks = document.querySelectorAll('.navigation-list li');
-
-  burger.addEventListener('click', () => {
-    //Toggle Nav
-    nav.classList.toggle('navigation-list-active');
-
-    //Animate links
-    navLinks.forEach((link, index) => {
-      if (link.style.animation) {
-        link.style.animation = '';
-      } else {
-        link.style.animation = link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-      }
-    });
-    //Burger Animation
-    burger.classList.toggle('toggle');
-  });
-};
-
 navSlide();
 
-const root = document.getElementById('root');
-const currentQuiz = {
-  result: 0,
-  type: '',
+const quizData = {
+  actors: actorsData,
+  frames: movieFramesData,
 };
 
-// document.querySelectorAll('.js-quiz-target').forEach((el) => {
-//   el.addEventListener('click', () => {
-//     console.log(el.dataset.target);
+const root = document.getElementById('root');
 
-//     const template = document.getElementById('quizTemplate');
-//     const quiz = template.content.cloneNode(true);
-
-//     quiz.getElementById('title').textContent = el.dataset.target;
-
-//     // root.innerHTML = '';
-//     // root.appendChild(quiz);
-//   });
-// });
+const state = {
+  currentQuizData: null,
+  currentQuestion: 1,
+  score: 0,
+};
 
 let currentQuestion = 0;
 let score = 0;
 
-const actorsClick = document.querySelector('.actors-click');
-let currentQuestionsList;
-actorsClick.addEventListener('click', () => {
-  console.log('clicked on button');
-  currentQuestionsList = actorsData;
-  loadQuiz();
-});
 
-const framesClick = document.querySelector('.frames-click');
-framesClick.addEventListener('click', () => {
-  console.log('clicked on button');
-  currentQuestionsList = movieFramesData;
-  loadQuiz();
-});
+
+function initQuiz(name) {
+  state.currentQuizData = quizData[name];
+  // przypisanie odpowiednich pytań
+  // pomieszanie odpowiedzi
+  // rozpoczęcie timera
+}
+
+function nextQuestion() {
+  // sprawdzamy czy dobra odpowiedź
+  // ustawiany currentQuestion na +1
+  // wyświetlamy kolejne pytanie (jeśli są, jeśli nie to endQuiz())
+  // startujemy timer
+}
+
+
+
+
+/**
+ * Logika
+ * 
+ * Po wybraniu quizu ustawiany stan na podstawie danych o quizie
+ */
 
 // Array that will store invalid movie frame answers
 let wrongAnswers = [];
@@ -102,14 +85,6 @@ const movieFrameBox = document.querySelector('.movieFrameBox');
 const frameImg = document.createElement('img');
 movieFrameBox.append(frameImg);
 
-// Randomizing order of questions
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-shuffleArray(currentQuestionsList);
 
 // Getting info from API for movie names
 async function loadWrongMovieNames() {
@@ -191,9 +166,6 @@ function loadQuiz() {
   }
 }
 
-// Loading quiz with a little delay, so the API with movie names can be fetched. <-- we can later berak this js file to smaller pieces and load the array at startup of the whole web app
-window.setTimeout(loadQuiz, 150);
-
 function selectAnswer() {
   let answer;
 
@@ -205,22 +177,8 @@ function selectAnswer() {
   return answer;
 }
 
-function nextQuestionHandler() {
-  const answer = selectAnswer();
-
-  if (answer === currentQuestionsList[currentQuestion].correct) {
-    // eslint-disable-next-line no-plusplus
-    score++;
-  }
-
-  // eslint-disable-next-line no-plusplus
-  currentQuestion++;
-
-  if (currentQuestion < currentQuestionsList.length) {
-    loadQuiz();
-  } else {
-    clearInterval(interval);
-    quiz.innerHTML = `<div class="container-end">
+function endQuiz () {
+  quiz.innerHTML = `<div class="container-end">
       <div class="table-score">
       <div>
       <h1>Your final score is: ${score} / ${currentQuestionsList.length}</h1> 
@@ -239,21 +197,35 @@ function nextQuestionHandler() {
       </div>
    </div>`;
 
-    function init() {
-      const facebookBtn = document.querySelector('.facebook-btn');
-      const twitterBtn = document.querySelector('.twitter-btn');
+  const facebookBtn = document.querySelector('.facebook-btn');
+  const twitterBtn = document.querySelector('.twitter-btn');
 
-      let postUrl = encodeURI(document.location.href);
-      let postTitle = encodeURI(
-        `Hello everyone! I have scored ${score}/${currentQuestionsList.length} points! Check out this quiz: `
-      );
+  const postUrl = encodeURI(document.location.href);
+  const postTitle = encodeURI(
+    `Hello everyone! I have scored ${score}/${currentQuestionsList.length} points! Check out this quiz: `
+  );
 
-      facebookBtn.setAttribute('href', `https://www.facebook.com/sharer.php?u=${postUrl}`);
+  facebookBtn.setAttribute('href', `https://www.facebook.com/sharer.php?u=${postUrl}`);
 
-      twitterBtn.setAttribute('href', `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
-    }
+  twitterBtn.setAttribute('href', `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
+}
 
-    init();
+function nextQuestionHandler() {
+  const answer = selectAnswer();
+
+  if (answer === currentQuestionsList[currentQuestion].correct) {
+    // eslint-disable-next-line no-plusplus
+    score++;
+  }
+
+  // eslint-disable-next-line no-plusplus
+  currentQuestion++;
+
+  if (currentQuestion < currentQuestionsList.length) {
+    loadQuiz();
+  } else {
+    clearInterval(interval);
+    endQuiz();
   }
 }
 
@@ -305,3 +277,11 @@ let interval;
 //     nextQuestionHandler();
 //   }
 // }
+
+
+document.querySelectorAll('.js-quiz-target').forEach((el) => {
+  el.addEventListener('click', () => {
+    const name = el.dataset.target;
+    initQuiz(name);
+  });
+});
