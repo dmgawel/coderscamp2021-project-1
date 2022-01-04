@@ -17,7 +17,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/inception.jpg',
+    imgSource: '/assets/images/movieFrames/inception.jpg',
   },
   {
     question: 'What movie is this frame from?',
@@ -26,7 +26,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/interstellar.jpg',
+    imgSource: '/assets/images/movieFrames/interstellar.jpg',
   },
   {
     question: 'What movie is this frame from?',
@@ -35,7 +35,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/rango.jpg',
+    imgSource: '/assets/images/movieFrames/rango.jpg',
   },
   {
     question: 'What movie is this frame from?',
@@ -44,7 +44,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/saturdayNightFever.jpg',
+    imgSource: '/assets/images/movieFrames/saturdayNightFever.jpg',
   },
   {
     question: 'What movie is this frame from?',
@@ -53,7 +53,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/theGodfather.jpg',
+    imgSource: '/assets/images/movieFrames/theGodfather.jpg',
   },
   {
     question: 'What movie is this frame from?',
@@ -62,7 +62,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/theHangover.jpg',
+    imgSource: '/assets/images/movieFrames/theHangover.jpg',
   },
   {
     question: 'What movie is this frame from?',
@@ -71,7 +71,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/theMatrix.jpg',
+    imgSource: '/assets/images/movieFrames/theMatrix.jpg',
   },
   {
     question: 'What movie is this frame from?',
@@ -80,7 +80,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/thorRagnarok.jpg',
+    imgSource: '/assets/images/movieFrames/thorRagnarok.jpg',
   },
   {
     question: 'What movie is this frame from?',
@@ -89,7 +89,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/UncutGems.jpg',
+    imgSource: '/assets/images/movieFrames/UncutGems.jpg',
   },
   {
     question: 'What movie is this frame from?',
@@ -98,7 +98,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/wallE.jpg',
+    imgSource: '/assets/images/movieFrames/wallE.jpg',
   },
   {
     question: 'What movie is this frame from?',
@@ -107,7 +107,7 @@ export const movieFramesData = [
     c: 'helloboiiiiiiii',
     d: 'helloboiiiiiiii',
     correct: 'a',
-    imgSource: '../assets/images/movieFrames/WallStWolf.jpg',
+    imgSource: '/assets/images/movieFrames/WallStWolf.jpg',
   },
 ];
 
