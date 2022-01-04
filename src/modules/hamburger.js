@@ -1,4 +1,4 @@
-export default function navSlide () {
+export function navSlide() {
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('.navigation-list');
   const navLinks = document.querySelectorAll('.navigation-list li');
@@ -18,4 +18,4 @@ export default function navSlide () {
     //Burger Animation
     burger.classList.toggle('toggle');
   });
-};
+}
