@@ -14,8 +14,8 @@
   padding: 1rem 2rem;
   border-radius: 15px;
   text-decoration: none;
-  color: #ffd600;
-  border: 2px solid #ffd600;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   cursor: pointer;
 }
 
@@ -26,8 +26,8 @@
   padding: 1rem 2rem;
   border-radius: 15px;
   text-decoration: none;
-  color: #ffd600;
-  border: 2px solid #ffd600;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   cursor: pointer;
 }
 
@@ -41,23 +41,23 @@ input[type='radio'] + label {
   margin-bottom: 0px;
   font-size: 14px;
   line-height: 20px;
-  color: #ffffff;
+  color: var(--white);
   border-radius: 15px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  background-color: black;
+  background-color: var(--black);
   background-repeat: repeat-x;
-  border: #ffd600;
-  border-color: #ffd600;
-  border-bottom-color: #ffd600;
+  border: var(--yellow);
+  border-color: var(--yellow);
+  border-bottom-color: var(--yellow);
 }
 
 input[type='radio']:checked + label {
   background-image: none;
-  color: black;
+  color: var(--black);
   outline: 0;
-  background-color: #ffd600;
+  background-color: var(--yellow);
 }
 
 ul {
@@ -65,13 +65,13 @@ ul {
 }
 
 #answerbuttons li:hover {
-  background-color: #ffd600;
-  color: black;
+  background-color: var(--yellow);
+  color: var(--black);
 }
 
 #answer-button:hover {
-  background-color: #ffd600;
-  color: black;
+  background-color: var(--yellow);
+  color: var(--black);
 }
 
 #a-text:checked {
@@ -85,23 +85,23 @@ ul {
   padding: 1rem 2rem;
   border-radius: 15px;
   text-decoration: none;
-  color: #ffd600;
-  border: 2px solid #ffd600;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   cursor: pointer;
   display: inline-block;
   border-radius: 15px;
-  background-color: black;
-  box-shadow: 0 2px black;
+  background-color: var(--black);
+  box-shadow: 0 2px var(--black);
 }
 
 #submit:active {
-  box-shadow: 0 2px black;
+  box-shadow: 0 2px var(--black);
   transform: translateY(2px);
 }
 
 #submit:hover {
-  background-color: #ffd600;
-  color: black;
+  background-color: var(--yellow);
+  color: var(--black);
 }
 
 .media-container {
@@ -128,21 +128,21 @@ ul {
   padding: 1rem 2rem;
   border-radius: 15px;
   text-decoration: none;
-  color: #ffd600;
-  border: 2px solid #ffd600;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   cursor: pointer;
   display: inline-block;
   border-radius: 15px;
-  background-color: black;
-  box-shadow: 0 2px black;
+  background-color: var(--black);
+  box-shadow: 0 2px var(--black);
 }
 
 .play-button:active {
-  box-shadow: 0 2px black;
+  box-shadow: 0 2px var(--black);
   transform: translateY(2px);
 }
 
 .play-button > button:hover {
-  background-color: #ffd600;
-  color: black;
+  background-color: var(--yellow);
+  color: var(--black);
 }

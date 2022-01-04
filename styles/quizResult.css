@@ -9,7 +9,7 @@
 }
 
 .table-score {
-  border: 3px solid #ffd600;
+  border: 3px solid var(--yellow);
   border-radius: 15px;
   width: 70vh;
   height: 80vh;
@@ -34,8 +34,8 @@
   padding: 1rem 2rem;
   border-radius: 15px;
   text-decoration: none;
-  color: #ffd600;
-  border: 2px solid #ffd600;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   cursor: pointer;
 }
 
