@@ -24,18 +24,18 @@
   padding: 10px;
   text-align: left;
   margin: 10px;
-  background-color: #000000;
+  background-color: var(--black);
   padding: 1rem 2rem;
   border-radius: 15px;
   text-decoration: none;
-  color: #ffd600;
-  border: 2px solid #ffd600;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   cursor: pointer;
 }
 
 .answers > li:hover {
-  background-color: #ffd600;
-  color: black;
+  background-color: var(--yellow);
+  color: var(--black);
 }
 
 input[type='radio'] {
@@ -48,22 +48,22 @@ input[type='radio'] + label {
   margin-bottom: 0px;
   font-size: 1.5rem;
   line-height: 20px;
-  color: #ffffff;
+  color: var(--white);
   border-radius: 15px;
   text-align: center;
   cursor: pointer;
-  background-color: black;
+  background-color: var(--black);
   background-repeat: repeat-x;
-  border: #ffd600;
-  border-color: #ffd600;
-  border-bottom-color: #ffd600;
+  border: var(--yellow);
+  border-color: var(--yellow);
+  border-bottom-color: var(--yellow);
 }
 
 input[type='radio']:checked + label {
   background-image: none;
-  color: black;
+  color: var(--black);
   outline: 0;
-  background-color: #ffd600;
+  background-color: var(--yellow);
 }
 
 .content-container > h2 {
@@ -77,14 +77,14 @@ input[type='radio']:checked + label {
   padding: 1rem 2rem;
   border-radius: 15px;
   text-decoration: none;
-  color: #ffd600;
-  border: 2px solid #ffd600;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   cursor: pointer;
 }
 
 .content-container > button:hover {
-  background-color: #ffd600;
-  color: black;
+  background-color: var(--yellow);
+  color: var(--black);
 }
 
 .actor-image > img {
