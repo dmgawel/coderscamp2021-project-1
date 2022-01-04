@@ -17,7 +17,7 @@
   <body>
     <nav class="menu">
       <ul class="logo">
-        <li class="logo-link"><a href="./index.html">QUIZ NAME</a></li>
+        <li class="logo-link"><a href="./pages/index.html">QUIZ NAME</a></li>
       </ul>
       <ul class="navigation-list">
         <li><a href="/pages/actors.html">Actors</a></li>
@@ -34,6 +34,9 @@
       <div id="quiz" class="quiz-container">
         <div class="actor-container">
           <div class="actor-image"></div>
+          <div class="timer-box">
+            <img src="../assets/timer/10.png" alt="Timer" id="timer-image" />
+          </div>
         </div>
         <div class="content-container">
           <h2 id="question">Question text</h2>
@@ -55,10 +58,7 @@
               <label id="d-text" for="d"></label>
             </li>
           </ul>
-        </div>
-        <button id="submit">Submit</button>
-        <div class="timer-box">
-          <img src="../assets/timer/10.png" alt="Timer" id="timer-image" />
+          <button id="submit">Submit</button>
         </div>
       </div>
     </main>
