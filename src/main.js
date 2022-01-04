@@ -24,3 +24,25 @@ const navSlide = () => {
 };
 
 navSlide();
+
+const root = document.getElementById('root');
+const currentQuiz =  {
+  result: 0,
+  type: '',
+};
+
+document.querySelectorAll('.js-quiz-target').forEach((el) => {
+  el.addEventListener('click', () => {
+    console.log(el.dataset.target);
+
+    const template = document.getElementById('quizTemplate');
+    const quiz = template.content.cloneNode(true);
+
+    quiz.getElementById('title').textContent = el.dataset.target;
+
+    root.innerHTML = '';
+    root.appendChild(quiz);
+
+
+  });
+});
