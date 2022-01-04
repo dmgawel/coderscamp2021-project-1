@@ -2,10 +2,14 @@
 
 .quiz-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-flow: column nowrap;
-  max-width: 70%;
+  width: 80%;
+  height: 80vh;
+}
+
+.actor-container {
+  flex-direction: column;
 }
 
 .answers {
@@ -18,9 +22,56 @@
 
 .answers > li {
   padding: 10px;
+  text-align: left;
+  margin: 10px;
+  background-color: #000000;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #ffd600;
+  border: 2px solid #ffd600;
+  cursor: pointer;
 }
 
-.quiz-container > button {
+.answers > li:hover {
+  background-color: #ffd600;
+  color: black;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+input[type='radio'] + label {
+  display: block;
+  padding: 4px 12px;
+  margin-bottom: 0px;
+  font-size: 1.5rem;
+  line-height: 20px;
+  color: #ffffff;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  background-color: black;
+  background-repeat: repeat-x;
+  border: #ffd600;
+  border-color: #ffd600;
+  border-bottom-color: #ffd600;
+}
+
+input[type='radio']:checked + label {
+  background-image: none;
+  color: black;
+  outline: 0;
+  background-color: #ffd600;
+}
+
+.content-container > h2 {
+  font-size: 2.5rem;
+}
+
+.content-container > button {
+  font-size: 1rem;
   margin: 10px;
   background-color: transparent;
   padding: 1rem 2rem;
@@ -31,7 +82,63 @@
   cursor: pointer;
 }
 
+.content-container > button:hover {
+  background-color: #ffd600;
+  color: black;
+}
+
 .actor-image > img {
-  width: 50%;
+  width: 500px;
+  max-height: 500px;
   border-radius: 10px;
+}
+
+/* MEDIA  */
+@media screen and (max-width: 1225px) {
+  .quiz-container {
+    width: 95%;
+  }
+
+  .actor-image > img {
+    width: 430px;
+    max-height: 430px;
+    border-radius: 10px;
+  }
+
+  .timer-box > img {
+    width: 150px;
+    max-height: 150px;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .quiz-container {
+    flex-direction: column;
+  }
+
+  .actor-image > img {
+    margin-top: 10px;
+    width: 240px;
+    max-height: 240px;
+    border-radius: 10px;
+  }
+
+  .timer-box > img {
+    width: 130px;
+    max-height: 130px;
+    border-radius: 10px;
+  }
+
+  .content-container > h2 {
+    font-size: 2rem;
+  }
+
+  .answers > li {
+    margin: 5px;
+  }
+
+  input[type='radio'] + label {
+    font-size: 1rem;
+  }
 }
