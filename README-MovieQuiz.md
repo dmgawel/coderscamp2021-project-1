@@ -6,7 +6,7 @@
 
 1. Adriana Duplicka (https://github.com/dadriana)
 2. Magdalena Czajkowska (https://github.com/MagdaCzajkowska)
-3. Marcin Kaliszewski (https://github.com/MCaliJr
+3. Marcin Kaliszewski (https://github.com/MCaliJr)
 4. Karol Homziuk (https://github.com/Karol-pl)
 5. Mateusz Obłoza (https://github.com/zyzgz)
 6. Michał Czajkowski (https://github.com/MichalCzajkowski1000)
