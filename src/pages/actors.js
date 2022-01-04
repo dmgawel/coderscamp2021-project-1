@@ -1,6 +1,4 @@
 import '../../styles/style.css';
-import '../../styles/actors.css';
-import '../../styles/quizResult.css';
 
 const actorsData = [
   {
@@ -128,7 +126,7 @@ let score = 0;
 window.setTimeout(loadQuiz, 150);
 
 function loadQuiz() {
-  timer();
+  // timer();
   deselectInputs();
 
   const currentQuizData = actorsData[currentQuestion];

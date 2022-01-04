@@ -1,0 +1,78 @@
+.homepage .menu {
+}
+
+.homepage .wrapper {
+  margin-top: 31px;
+  background-color: #000000dd;
+}
+
+.homepage .text {
+  margin-top: 24px;
+  font-size: 16px;
+  line-height: 1;
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 4px solid #ffd600;
+  text-align: justify;
+}
+
+@media (min-width: 768px) {
+  .homepage .text {
+    margin-top: 42px;
+    font-size: 26px;
+    line-height: 29px;
+    padding-bottom: 45px;
+    margin-bottom: 21px;
+  }
+}
+
+.choose-text {
+  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 20px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .choose-text {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 37px;
+  }
+}
+
+.homepage .button {
+  min-width: 292px;
+}
+
+@media (min-width: 768px) {
+  .homepage .menu {
+    justify-content: center;
+  }
+
+  .homepage .wrapper {
+    margin-top: 105px;
+  }
+
+  .homepage .header {
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+  }
+
+  .homepage .text {
+    margin-top: 42px;
+    font-size: 26px;
+    line-height: 29px;
+    padding-bottom: 45px;
+    margin-bottom: 21px;
+    border-bottom: 4px solid #ffd600;
+    text-align: justify;
+  }
+
+  .homepage .button {
+    min-width: 292px;
+  }
+}
