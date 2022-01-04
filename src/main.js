@@ -31,6 +31,11 @@ const movieFrameBox = document.querySelector('.movieFrameBox');
 const frameImg = document.createElement('img');
 movieFrameBox.append(frameImg);
 
+const containerToHide = document.querySelector('#containerToHide');
+const homeContainer = document.querySelector('.home-container');
+const actorsAndMovieQuestionsElements = document.querySelector('.actors-and-movie-questions-elements');
+const soundtracksQuestionsElements = document.querySelector('.soundtracks-question-elements');
+
 // Hamburger navigation
 navSlide();
 
@@ -38,8 +43,6 @@ const quizData = {
   actors: actorsData,
   frames: movieFramesData,
 };
-
-const root = document.getElementById('root');
 
 const state = {
   currentQuizData: null,
@@ -52,7 +55,7 @@ function initQuiz(name) {
   const questionsToBeMixed = quizData[name];
 
   // pomieszanie odpowiedzi
-  const mixedQuestions = shuffleArray(questionsToBeMixed);
+  shuffleArray(questionsToBeMixed);
   state.currentQuizData = questionsToBeMixed;
 
   // odpalenie quizu
@@ -284,11 +287,25 @@ function changeTimerImage() {
 
 document.querySelectorAll('.js-quiz-target').forEach((el) => {
   el.addEventListener('click', () => {
-    document.querySelector('.quiz-container').classList.remove('hidden');
-    document.querySelector('.home-container').className += ' hidden';
-
     const name = el.dataset.target;
+    containerToHide.hidden = false;
+    homeContainer.hidden = true;
+    if (name === 'soundtracks') {
+      actorsAndMovieQuestionsElements.hidden = true;
+      soundtracksQuestionsElements.hidden = false;
+    } else {
+      soundtracksQuestionsElements.hidden = true;
+      actorsAndMovieQuestionsElements.hidden = false;
+    }
+
     initQuiz(name);
-    console.log(quizData[name]);
+    // console.log(quizData[name]);
+    console.log(name);
   });
 });
+
+/* ! do soundtrack musimy zająć się: 
+klasa soundtracks-question-elements - zdjąć hidden
+
+
+*/
