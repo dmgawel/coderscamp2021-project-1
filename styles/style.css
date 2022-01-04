@@ -1,49 +1,11 @@
 @import './normalize.css';
 @import './base.css';
 @import './header.css';
-
-@import './actors.css';
-@import './quizResult.css';
+@import './homepage.css';
 
 /* MAIN CONTENT */
-
 main {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.home-container {
-  padding-left: 16px;
-  padding-right: 16px;
-  width: 100%;
-  max-width: 970px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.text-content {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #ffd600;
-}
-
-.buttons-container {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  padding: 20px;
-}
-
-.buttons-container > button {
-  margin: 10px;
-  background-color: transparent;
-  padding: 1rem 2rem;
-  border-radius: 15px;
-  text-decoration: none;
-  color: #ffd600;
-  border: 2px solid #ffd600;
-  cursor: pointer;
 }
