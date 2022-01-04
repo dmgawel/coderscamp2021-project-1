@@ -2,9 +2,9 @@ import '../../styles/style.css';
 import '../../styles/soundtracksStyling.css';
 import '../../styles/quizResult.css';
 
-const counter = (() =>{
+const counter = (() => {
   let timerId;
-  const counterContainer = document.getElementById("counter-container");
+  const counterContainer = document.getElementById('counter-container');
   const counterImgData = [
     '../assets/images/soundtracks/7.png',
     '../assets/images/soundtracks/6.png',
@@ -16,28 +16,29 @@ const counter = (() =>{
   ];
   let startCount = 0;
   const next = () => {
-    if(startCount < counterImgData.length - 1){
-      startCount ++;
+    if (startCount < counterImgData.length - 1) {
+      startCount++;
     } else {
       nextQuestion();
       startCount = 0;
       clearInterval(timerId);
     }
-    counterContainer.src=counterImgData[startCount];
-  }
+    counterContainer.src = counterImgData[startCount];
+  };
   const start = () => {
     timerId = setInterval(next, 1000);
-  }
+  };
   const stop = () => {
     startCount = 0;
     clearInterval(timerId);
-    counterContainer.src=counterImgData[startCount];
-  }
+    counterContainer.src = counterImgData[startCount];
+  };
   return {
-  start, stop
-  }
+    start,
+    stop,
+  };
 })();
-  
+
 const soundsData = [
   {
     question: 'Do You know what movie is this music from?',
@@ -130,7 +131,7 @@ const soundsData = [
     soundSource: '../assets/sounds/samiSwoi.mp3',
   },
 ];
-  
+
 // Array that will store invalid soundtrack answers
 let wrongAnswers = [];
 
@@ -140,8 +141,8 @@ async function getDataFromDb(pageNumber) {
   );
   const data = await response.json();
   return data;
-};
-  
+}
+
 const quiz = document.getElementById('quiz');
 const soundItem = document.getElementById('sound');
 const questionElement = document.getElementById('question');
@@ -150,7 +151,7 @@ const a_text = document.getElementById('a-text');
 const b_text = document.getElementById('b-text');
 const c_text = document.getElementById('c-text');
 const d_text = document.getElementById('d-text');
-const playBtn = document.getElementById("soundtrackplay");
+const playBtn = document.getElementById('soundtrackplay');
 const submitBtn = document.getElementById('submit');
 const ul = document.querySelector('.answers');
 
@@ -201,7 +202,7 @@ async function loadWrongMovieNames() {
 
   // Function returns array with invalid movie titles
   return wrongAnswers;
-};
+}
 
 loadWrongMovieNames().catch((e) => {
   // eslint-disable-next-line no-unused-expressions
@@ -214,18 +215,18 @@ function deselectInputs() {
     // eslint-disable-next-line no-param-reassign
     answerEl.checked = false;
   });
-};
+}
 
 let delayId;
-  
-playBtn.addEventListener("click", function() {
+
+playBtn.addEventListener('click', function () {
   soundItem.play();
   delayId = setTimeout(counter.start, 10000);
 });
 
 function loadQuiz() {
   deselectInputs();
- 
+
   const currentQuizData = soundsData[currentQuestion];
 
   // Adding source to paste on the page
@@ -239,57 +240,56 @@ function loadQuiz() {
   } while (b_text.innerHTML === a_text.innerHTML);
   do {
     c_text.innerHTML = currentQuizData.c || wrongAnswers[Math.floor(Math.random() * 91)];
-  } while (c_text.innerHTML === a_text.innerHTML ||
-      c_text.innerHTML === b_text.innerHTML);
+  } while (c_text.innerHTML === a_text.innerHTML || c_text.innerHTML === b_text.innerHTML);
   do {
-      d_text.innerHTML = currentQuizData.d || wrongAnswers[Math.floor(Math.random() * 91)];
+    d_text.innerHTML = currentQuizData.d || wrongAnswers[Math.floor(Math.random() * 91)];
   } while (
-      d_text.innerHTML === a_text.innerHTML ||
-      d_text.innerHTML === b_text.innerHTML ||
-      d_text.innerHTML === c_text.innerHTML
-    );
-    // Randomizing order of ABCD answers
-    for (let i = ul.children.length; i >= 0; i--) {
-      // eslint-disable-next-line no-bitwise
-      ul.appendChild(ul.children[(Math.random() * i) | 0]);
+    d_text.innerHTML === a_text.innerHTML ||
+    d_text.innerHTML === b_text.innerHTML ||
+    d_text.innerHTML === c_text.innerHTML
+  );
+  // Randomizing order of ABCD answers
+  for (let i = ul.children.length; i >= 0; i--) {
+    // eslint-disable-next-line no-bitwise
+    ul.appendChild(ul.children[(Math.random() * i) | 0]);
   }
-};
-  
+}
+
 window.setTimeout(loadQuiz, 150);
 
-  function selectAnswer() {
-    let answer = undefined;
-  
-    answerElements.forEach((answerEl) => {
-      if (answerEl.checked) {
-        answer = answerEl.id;
-      }
-    });
-    return answer;
-  };
-  
+function selectAnswer() {
+  let answer = undefined;
+
+  answerElements.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
+    }
+  });
+  return answer;
+}
+
 const submitFunction = () => {
   const answer = selectAnswer();
   if (answer) {
     if (answer === soundsData[currentQuestion].correct) {
       score++;
     }
-  nextQuestion();
+    nextQuestion();
   }
-}
-  
-function nextQuestion(){
+};
+
+function nextQuestion() {
   currentQuestion++;
- 
+
   soundItem.pause();
   counter.stop();
   clearTimeout(delayId);
-  
+
   if (currentQuestion < soundsData.length) {
     loadQuiz();
   } else {
     quiz.innerHTML = `<h2>Your final score is: ${score} / ${soundsData.length}</h2><button onClick="location.reload()">Reload</button>`;
   }
 }
-  
+
 submitBtn.addEventListener('click', submitFunction);
