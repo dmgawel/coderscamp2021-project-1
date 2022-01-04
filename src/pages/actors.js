@@ -127,19 +127,51 @@ let score = 0;
 // Loading quiz with a little delay, so the API with movie names can be fetched.
 window.setTimeout(loadQuiz, 150);
 
+// function loadQuiz() {
+//   timer();
+//   deselectInputs();
+
+//   const currentQuizData = actorsData[currentQuestion];
+
+//   actorImg.src = currentQuizData.imgSource;
+//   questionElement.innerHTML = currentQuizData.question;
+//   questionElement.innerHTML = currentQuizData.question;
+//   a_text.innerHTML = currentQuizData.a;
+//   b_text.innerHTML = currentQuizData.b;
+//   c_text.innerHTML = currentQuizData.c;
+//   d_text.innerHTML = currentQuizData.d;
+// }
+
 function loadQuiz() {
   timer();
   deselectInputs();
 
   const currentQuizData = actorsData[currentQuestion];
 
+  // Adding source to image on the page
   actorImg.src = currentQuizData.imgSource;
   questionElement.innerHTML = currentQuizData.question;
-  questionElement.innerHTML = currentQuizData.question;
-  a_text.innerHTML = currentQuizData.a;
-  b_text.innerHTML = currentQuizData.b;
-  c_text.innerHTML = currentQuizData.c;
-  d_text.innerHTML = currentQuizData.d;
+
+  // Making a, b, c, d options display as the correct answer or random wrong answer + making sure that displayed names are not repeating
+  a_text.innerHTML = currentQuizData.a || wrongAnswers[Math.floor(Math.random() * 91)];
+  do {
+    b_text.innerHTML = currentQuizData.b || wrongAnswers[Math.floor(Math.random() * 91)];
+  } while (b_text.innerHTML === a_text.innerHTML);
+  do {
+    c_text.innerHTML = currentQuizData.c || wrongAnswers[Math.floor(Math.random() * 91)];
+  } while (c_text.innerHTML === a_text.innerHTML || c_text.innerHTML === b_text.innerHTML);
+  do {
+    d_text.innerHTML = currentQuizData.d || wrongAnswers[Math.floor(Math.random() * 91)];
+  } while (
+    d_text.innerHTML === a_text.innerHTML ||
+    d_text.innerHTML === b_text.innerHTML ||
+    d_text.innerHTML === c_text.innerHTML
+  );
+  // Randomizing order of ABCD answers
+  for (let i = ul.children.length; i >= 0; i--) {
+    // eslint-disable-next-line no-bitwise
+    ul.appendChild(ul.children[(Math.random() * i) | 0]);
+  }
 }
 
 function selectAnswer() {
