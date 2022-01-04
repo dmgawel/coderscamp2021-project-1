@@ -170,3 +170,7 @@ main {
   border: 2px solid #ffd600;
   cursor: pointer;
 }
+
+.hidden {
+  display: none;
+}
