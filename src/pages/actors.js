@@ -10,7 +10,7 @@ export const actorsData = [
     c: 'Arron Something',
     d: 'Brad Pitt',
     correct: 'b',
-    imgSource: '../assets/images/actors/Willem_Dafoe.jpg',
+    imgSource: '/assets/images/actors/Willem_Dafoe.jpg',
   },
   {
     question: 'What is the name of this actress?',
@@ -19,7 +19,7 @@ export const actorsData = [
     c: 'Scarlett Johansson ',
     d: 'Katherina Zeta-Jones',
     correct: 'c',
-    imgSource: '../assets/images/actors/Scarlett_Johansson.jpg',
+    imgSource: '/assets/images/actors/Scarlett_Johansson.jpg',
   },
   {
     question: 'What is the name of this actress?',
@@ -28,7 +28,7 @@ export const actorsData = [
     c: 'Kelly Reilly ',
     d: 'Winona Ryder',
     correct: 'c',
-    imgSource: '../assets/images/actors/Kelly_Reilly.jpg',
+    imgSource: '/assets/images/actors/Kelly_Reilly.jpg',
   },
   {
     question: 'What is the name of this actor?',
@@ -37,7 +37,7 @@ export const actorsData = [
     c: 'Charlie Sheen',
     d: 'John Void',
     correct: 'a',
-    imgSource: '../assets/images/actors/Andrew_Garfield.jpg',
+    imgSource: '/assets/images/actors/Andrew_Garfield.jpg',
   },
   {
     question: 'What is the name of this actress?',
@@ -46,7 +46,7 @@ export const actorsData = [
     c: 'Zoe Saldana',
     d: 'Monica Belluca',
     correct: 'a',
-    imgSource: '../assets/images/actors/Angelina_Jolie.jpg',
+    imgSource: '/assets/images/actors/Angelina_Jolie.jpg',
   },
   {
     question: 'What is the name of this actress?',
@@ -55,7 +55,7 @@ export const actorsData = [
     c: 'Carrie-Anne Moss  ',
     d: 'Charlize Theron',
     correct: 'c',
-    imgSource: '../assets/images/actors/Carrie-Anne_Moss.jpg',
+    imgSource: '/assets/images/actors/Carrie-Anne_Moss.jpg',
   },
   {
     question: 'What is the name of this actor?',
@@ -64,7 +64,7 @@ export const actorsData = [
     c: 'Tom Cruise',
     d: 'Tom Holland ',
     correct: 'd',
-    imgSource: '../assets/images/actors/Tom_Holland.jpg',
+    imgSource: '/assets/images/actors/Tom_Holland.jpg',
   },
   {
     question: 'What is the name of this actor?',
@@ -73,7 +73,7 @@ export const actorsData = [
     c: 'Christian Bale',
     d: 'Liam Neeson',
     correct: 'a',
-    imgSource: '../assets/images/actors/Leonardo_DiCaprio.jpg',
+    imgSource: '/assets/images/actors/Leonardo_DiCaprio.jpg',
   },
   {
     question: 'What is the name of this actor?',
@@ -82,7 +82,7 @@ export const actorsData = [
     c: 'Keanu Reeves ',
     d: 'Clint Eastwood',
     correct: 'c',
-    imgSource: '../assets/images/actors/Keanu_Reeves.jpg',
+    imgSource: '/assets/images/actors/Keanu_Reeves.jpg',
   },
   {
     question: 'What is the name of this actor?',
@@ -91,7 +91,7 @@ export const actorsData = [
     c: 'Brad Pitt',
     d: 'Jason Statham ',
     correct: 'd',
-    imgSource: '../assets/images/actors/Jason_Statham.jpg',
+    imgSource: '/assets/images/actors/Jason_Statham.jpg',
   },
   {
     question: 'What is the name of this actress?',
@@ -100,7 +100,7 @@ export const actorsData = [
     c: 'Cate Blanchett',
     d: 'Sandra Bullock',
     correct: 'a',
-    imgSource: '../assets/images/actors/Jennifer_Landon.jpg',
+    imgSource: '/assets/images/actors/Jennifer_Landon.jpg',
   },
 ];
 

@@ -6,13 +6,13 @@ const counter = (() => {
   let timerId;
   const counterContainer = document.getElementById('counter-container');
   const counterImgData = [
-    '../assets/images/soundtracks/7.png',
-    '../assets/images/soundtracks/6.png',
-    '../assets/images/soundtracks/5.png',
-    '../assets/images/soundtracks/4.png',
-    '../assets/images/soundtracks/3.png',
-    '../assets/images/soundtracks/2.png',
-    '../assets/images/soundtracks/1.png',
+    '/assets/images/soundtracks/7.png',
+    '/assets/images/soundtracks/6.png',
+    '/assets/images/soundtracks/5.png',
+    '/assets/images/soundtracks/4.png',
+    '/assets/images/soundtracks/3.png',
+    '/assets/images/soundtracks/2.png',
+    '/assets/images/soundtracks/1.png',
   ];
   let startCount = 0;
   const next = () => {
@@ -47,7 +47,7 @@ const soundsData = [
     c: '',
     d: '',
     correct: 'a',
-    soundSource: '../assets/sounds/frozen.mp3',
+    soundSource: '/assets/sounds/frozen.mp3',
   },
   {
     question: 'Do You know what movie is this music from?',
@@ -56,7 +56,7 @@ const soundsData = [
     c: 'Batman',
     d: '',
     correct: 'c',
-    soundSource: '../assets/sounds/batman1989.mp3',
+    soundSource: '/assets/sounds/batman1989.mp3',
   },
   {
     question: 'Do You know what movie is this music from?',
@@ -65,7 +65,7 @@ const soundsData = [
     c: '',
     d: '',
     correct: 'b',
-    soundSource: '../assets/sounds/czterdziestolatek.mp3',
+    soundSource: '/assets/sounds/czterdziestolatek.mp3',
   },
   {
     question: 'Do You know what movie is this music from?',
@@ -74,7 +74,7 @@ const soundsData = [
     c: '',
     d: '',
     correct: 'b',
-    soundSource: '../assets/sounds/edwardScissorhands.mp3',
+    soundSource: '/assets/sounds/edwardScissorhands.mp3',
   },
   {
     question: 'Do You know what movie is this music from?',
@@ -83,7 +83,7 @@ const soundsData = [
     c: '',
     d: 'Hannibal',
     correct: 'd',
-    soundSource: '../assets/sounds/hannibal.mp3',
+    soundSource: '/assets/sounds/hannibal.mp3',
   },
   {
     question: 'Do You know what movie is this music from?',
@@ -92,7 +92,7 @@ const soundsData = [
     c: '',
     d: '',
     correct: 'a',
-    soundSource: '../assets/sounds/homeAlone.mp3',
+    soundSource: '/assets/sounds/homeAlone.mp3',
   },
   {
     question: 'Do You know what movie is this music from?',
@@ -101,7 +101,7 @@ const soundsData = [
     c: '',
     d: '',
     correct: 'a',
-    soundSource: '../assets/sounds/queensGambit.mp3',
+    soundSource: '/assets/sounds/queensGambit.mp3',
   },
   {
     question: 'Do You know what movie is this music from?',
@@ -110,7 +110,7 @@ const soundsData = [
     c: '',
     d: 'The Mission',
     correct: 'd',
-    soundSource: '../assets/sounds/mission.mp3',
+    soundSource: '/assets/sounds/mission.mp3',
   },
   {
     question: 'Do You know what movie is this music from?',
@@ -119,7 +119,7 @@ const soundsData = [
     c: '',
     d: 'Master Thaddeus: The Last Foray in Lithuania',
     correct: 'd',
-    soundSource: '../assets/sounds/panTadeusz.mp3',
+    soundSource: '/assets/sounds/panTadeusz.mp3',
   },
   {
     question: 'Do You know what movie is this music from?',
@@ -128,7 +128,7 @@ const soundsData = [
     c: 'Our Folks',
     d: '',
     correct: 'c',
-    soundSource: '../assets/sounds/samiSwoi.mp3',
+    soundSource: '/assets/sounds/samiSwoi.mp3',
   },
 ];
 
