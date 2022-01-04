@@ -165,11 +165,12 @@ function loadQuiz() {
 
   const loadQuizQuizData = state.currentQuizData[state.currentQuestion];
 
-  // If quiz requires images, load them
+  // If quiz requires image, load it
   if (actorsAndMovieQuestionsElements.hidden === false) {
     // Add source to image on the page
     frameImg.src = loadQuizQuizData.imgSource;
-  } else if (actorsAndMovieQuestionsElements.hidden === false) {
+  } // if quiz requires sound file, load it
+  else if (actorsAndMovieQuestionsElements.hidden === false) {
     soundItem.src = loadQuizQuizData.soundSource;
   }
 
