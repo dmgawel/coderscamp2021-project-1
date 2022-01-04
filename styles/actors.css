@@ -91,6 +91,7 @@ input[type='radio']:checked + label {
   width: 500px;
   max-height: 500px;
   border-radius: 10px;
+  margin-bottom: 2rem;
 }
 
 /* MEDIA  */
@@ -122,6 +123,7 @@ input[type='radio']:checked + label {
     width: 240px;
     max-height: 240px;
     border-radius: 10px;
+    margin-bottom: 0.5rem;
   }
 
   .timer-box > img {
@@ -140,5 +142,11 @@ input[type='radio']:checked + label {
 
   input[type='radio'] + label {
     font-size: 1rem;
+    padding: 2px 12px;
+    margin-bottom: 0px;
+  }
+
+  .content-container > h2 {
+    font-size: 1.5rem;
   }
 }

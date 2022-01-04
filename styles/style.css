@@ -38,7 +38,7 @@ a {
   font-size: 1.5rem;
   border-bottom: 2px solid var(--yellow);
   color: var(--yellow);
-  padding: 10px;
+  padding: 5px;
 }
 
 a {
@@ -56,6 +56,7 @@ a {
 
 .logo {
   list-style-type: none;
+  padding-left: 0px;
 }
 
 .logo-link > a {
@@ -70,7 +71,7 @@ a {
 
 .navigation-list {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   list-style-type: none;
 }
@@ -97,8 +98,8 @@ a {
   .navigation-list {
     position: absolute;
     right: 0px;
-    height: 92vh;
-    top: 8vh;
+    height: 95vh;
+    top: 5vh;
     background-color: var(--black);
     display: flex;
     flex-direction: column;
@@ -112,6 +113,14 @@ a {
   }
   .burger {
     display: block;
+  }
+
+  .logo {
+    font-size: 0.8rem;
+  }
+
+  .navigation-list > li {
+    margin: 3rem;
   }
 }
 
