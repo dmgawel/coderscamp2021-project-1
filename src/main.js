@@ -14,6 +14,7 @@ import { navSlide } from './modules/hamburger';
 
 import { actorsData } from './pages/actors';
 import { movieFramesData } from './pages/frames';
+import { soundsData } from './pages/sounds';
 
 const quiz = document.getElementById('quiz');
 const questionElement = document.getElementById('question');
@@ -25,6 +26,8 @@ const d_text = document.getElementById('d-text');
 const submitBtn = document.getElementById('submit');
 
 const ul = document.querySelector('.answers');
+
+const soundItem = document.getElementById('sound');
 
 // Choosing movie frame box and appending the photo to it
 const movieFrameBox = document.querySelector('.movieFrameBox');
@@ -42,6 +45,7 @@ navSlide();
 const quizData = {
   actors: actorsData,
   frames: movieFramesData,
+  soundtracks: soundsData,
 };
 
 const state = {
@@ -161,8 +165,14 @@ function loadQuiz() {
 
   const loadQuizQuizData = state.currentQuizData[state.currentQuestion];
 
-  // Adding source to image on the page
-  frameImg.src = loadQuizQuizData.imgSource;
+  // If quiz requires images, load them
+  if (actorsAndMovieQuestionsElements.hidden === false) {
+    // Add source to image on the page
+    frameImg.src = loadQuizQuizData.imgSource;
+  } else if (actorsAndMovieQuestionsElements.hidden === false) {
+    soundItem.src = loadQuizQuizData.soundSource;
+  }
+
   questionElement.innerHTML = loadQuizQuizData.question;
 
   a_text.innerHTML = loadQuizQuizData.a;
@@ -287,6 +297,8 @@ function changeTimerImage() {
 
 document.querySelectorAll('.js-quiz-target').forEach((el) => {
   el.addEventListener('click', () => {
+    state.currentQuestion = 0;
+    state.score = 0;
     const name = el.dataset.target;
     containerToHide.hidden = false;
     homeContainer.hidden = true;
@@ -300,7 +312,6 @@ document.querySelectorAll('.js-quiz-target').forEach((el) => {
 
     initQuiz(name);
     // console.log(quizData[name]);
-    console.log(name);
   });
 });
 
