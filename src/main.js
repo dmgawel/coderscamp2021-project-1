@@ -28,6 +28,7 @@ const submitBtn = document.getElementById('submit');
 const ul = document.querySelector('.answers');
 
 const soundItem = document.getElementById('sound');
+const playBtn = document.getElementById('soundtrackplay');
 
 // Choosing movie frame box and appending the photo to it
 const movieFrameBox = document.querySelector('.movieFrameBox');
@@ -66,7 +67,16 @@ function initQuiz(name) {
   loadQuiz();
 
   // rozpoczęcie timera
-  timer();
+  if (actorsAndMovieQuestionsElements.hidden === false) {
+    // Add source to image on the page
+    timer();
+  } // if quiz requires sound file, load it
+  else if (soundtracksQuestionsElements.hidden === false) {
+    playBtn.addEventListener('click', function () {
+      soundItem.play();
+      setTimeout(timer, 10000);
+    });
+  }
 }
 
 function nextQuestion() {
@@ -91,7 +101,19 @@ function nextQuestion() {
   }
 
   // startujemy timer
-  timer();
+  if (actorsAndMovieQuestionsElements.hidden === false) {
+    // Add source to image on the page
+    timer();
+  } // if quiz requires sound file, load it
+  else if (soundtracksQuestionsElements.hidden === false) {
+    let imageSrcText = window.location.origin + '/assets/timer/10.png';
+    document.getElementById('timer-image').src = imageSrcText;
+    playBtn.addEventListener('click', function () {
+      soundItem.play();
+      setTimeout(timer, 10000);
+      clearInterval(interval);
+    });
+  }
 }
 
 /**
@@ -155,7 +177,6 @@ let wrongAnswers = [];
 
 function deselectInputs() {
   answerElements.forEach((answerEl) => {
-    // eslint-disable-next-line no-param-reassign
     answerEl.checked = false;
   });
 }
@@ -170,7 +191,8 @@ function loadQuiz() {
     // Add source to image on the page
     frameImg.src = loadQuizQuizData.imgSource;
   } // if quiz requires sound file, load it
-  else if (actorsAndMovieQuestionsElements.hidden === false) {
+  else if (soundtracksQuestionsElements.hidden === false) {
+    console.log(loadQuizQuizData);
     soundItem.src = loadQuizQuizData.soundSource;
   }
 
@@ -218,7 +240,7 @@ function endQuiz() {
   quiz.innerHTML = `<div class="container-end">
       <div class="table-score">
       <div>
-      <h1>Your final score is: ${state.score} / ${state.currentQuizData.length}</h1> 
+      <h1>Your final score is: ${state.score} / ${state.currentQuizData.length}</h1>
           <div class="buttons-container-end">
               <button><a href="../index.html" class="btn">Go Home</a></button>
               <h2>Share your score:</h2>
@@ -316,7 +338,7 @@ document.querySelectorAll('.js-quiz-target').forEach((el) => {
   });
 });
 
-/* ! do soundtrack musimy zająć się: 
+/* ! do soundtrack musimy zająć się:
 klasa soundtracks-question-elements - zdjąć hidden
 
 
