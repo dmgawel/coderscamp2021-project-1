@@ -73,15 +73,7 @@ export const movieFramesData = [
     correct: 'a',
     imgSource: '/assets/images/movieFrames/theMatrix.jpg',
   },
-  {
-    question: 'What movie is this frame from?',
-    a: 'Thor: Ragnarok',
-    b: 'helloboiiiiiiii',
-    c: 'helloboiiiiiiii',
-    d: 'helloboiiiiiiii',
-    correct: 'a',
-    imgSource: '/assets/images/movieFrames/thorRagnarok.jpg',
-  },
+
   {
     question: 'What movie is this frame from?',
     a: 'Uncut Gems',
