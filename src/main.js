@@ -8,6 +8,7 @@ import '../styles/actors.css';
 import '../styles/quizResult.css';
 import '../styles/movieFrameStyling.css';
 import '../styles/style.css';
+import '../styles/soundtracksStyling.css';
 
 import { shuffleArray } from './modules/shuffleArray';
 import { navSlide } from './modules/hamburger';
