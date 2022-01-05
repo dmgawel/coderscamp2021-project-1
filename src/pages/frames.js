@@ -77,15 +77,6 @@ export const movieFramesData = [
   },
   {
     question: 'What movie is this frame from?',
-    a: 'Thor: Ragnarok',
-    b: movieNames[51],
-    c: movieNames[52],
-    d: movieNames[53],
-    correct: 'a',
-    imgSource: '/assets/images/movieFrames/thorRagnarok.jpg',
-  },
-  {
-    question: 'What movie is this frame from?',
     a: 'Uncut Gems',
     b: movieNames[54],
     c: movieNames[55],
