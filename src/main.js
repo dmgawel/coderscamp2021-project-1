@@ -1,9 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable array-callback-return */
-/* eslint-disable consistent-return */
-/* eslint-disable no-plusplus */
-/* eslint-disable camelcase */
-
 import '../styles/actors.css';
 import '../styles/quizResult.css';
 import '../styles/movieFrameStyling.css';
@@ -316,6 +310,5 @@ navLinks.forEach((el) => {
     }
 
     initQuiz(name);
-    // console.log(quizData[name]);
   });
 });
