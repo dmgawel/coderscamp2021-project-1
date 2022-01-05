@@ -359,10 +359,15 @@ function timer() {
   }
 }
 
+function pauseSoundtrack() {
+  soundItem.pause();
+}
+
 navLinks.forEach((el) => {
   el.addEventListener('click', (e) => {
     clearTimer();
     renderTimer();
+    pauseSoundtrack();
 
     // Remove classes
     navLinks.forEach((navLink) => {
