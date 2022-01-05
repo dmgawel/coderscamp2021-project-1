@@ -106,8 +106,6 @@ function initQuiz(name) {
 }
 
 function nextQuestion() {
-  clearTimer();
-
   // sprawdzamy czy dobra odpowiedź
   const answer = selectAnswer();
 
@@ -315,15 +313,17 @@ function renderTimer() {
   const imageSrcText = `/assets/timer/${state.timerCounter}.png`;
 
   // replacing image "src" attribute with a new value
-  document.getElementById('timer-image').src = imageSrcText;
+  document.querySelectorAll('.timer-box > img').forEach((el) => {
+    el.src = imageSrcText;
+  });
 }
 
 function countdownTimer() {
   state.timerCounter--;
 
   if (state.timerCounter === 0) {
-    nextQuestion();
     clearTimer();
+    nextQuestion();
   } else {
     renderTimer();
   }
@@ -332,16 +332,12 @@ function countdownTimer() {
 function clearTimer() {
   clearInterval(state.timerInterval);
   state.timerCounter = 10;
+  renderTimer();
 }
 
 function startTimer() {
   clearTimer();
-  if (state.currentQuestion < 11) {
-    renderTimer();
-    state.timerInterval = setInterval(countdownTimer, 1000);
-  } else {
-    endQuiz();
-  }
+  state.timerInterval = setInterval(countdownTimer, 1000);
 }
 
 // 7 images of film plates
