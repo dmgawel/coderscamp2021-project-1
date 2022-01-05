@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍿</text></svg>">
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍿</text></svg>"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Quiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,15 +46,15 @@
         <div class="decorator decorator-popcorn"></div>
         <div class="text-content">
           <h1 class="home-title">Welcome to the MOVIE QUIZ</h1>
-          <p><center>Popular actor, movie frame, soundtrack</center></p>
-          <p>
-            You have a unique chance to check your knowledge about movies and learn more about them. Choose your quiz.
-            Make sure you select the correct answer and click "Submit" to confirm it. Otherwise, your score for the
-            question will be "0"! Remember - you only have 10 seconds to answer each question.
-          </p>
-          <p>
-            <center><b>Let's play!</b></center>
-          </p>
+          <center>
+            <p>You have a unique chance to check your knowledge about the movie industry and learn more about it.</p>
+            Please choose your quiz. After you select the correct answer you can either click "Submit" or wait for timer
+            to finish in order to confirm your guess.
+            <p>Be fast - you only have 10 seconds to answer each question.</p>
+            <p>
+              <b>Let's play!</b>
+            </p>
+          </center>
         </div>
         <div class="home-footer">
           <p class="home-choose">Choose your quiz:</p>
@@ -69,12 +72,8 @@
     <div id="containerToHide" hidden>
       <div id="quiz" class="quiz-container">
         <h1 id="title"></h1>
-        
+
         <div class="soundtracks-question-elements" hidden>
-          <h4>
-            Please make sure your answer is correct and click "SUBMIT". <br />Otherwise your score for the question will
-            be 0 ! &#128540;
-          </h4>
           <div class="media-container">
             <!-- <img src="./static/assets/img/soundtracks/nuta.png" id="nuta"> -->
             <div class="play-button">
@@ -86,10 +85,10 @@
             </div>
           </div>
         </div>
-        
+
         <div class="actors-and-movie-questions-elements" hidden>
           <div class="movieFrameDiv">
-            <div class="movieFrameBox"><img src="" alt=""></div>
+            <div class="movieFrameBox"><img src="" alt="" /></div>
             <div class="timer-box">
               <img src="/assets/timer/10.png" alt="Timer" />
             </div>
@@ -100,24 +99,24 @@
           <ul class="answers">
             <li>
               <input type="radio" name="answer" id="a" class="answer" />
-            <label id="a-text" for="a"></label>
-          </li>
-          <li>
-            <input type="radio" name="answer" id="b" class="answer" />
-            <label id="b-text" for="b"></label>
-          </li>
-          <li>
-            <input type="radio" name="answer" id="c" class="answer" />
-            <label id="c-text" for="c"></label>
-          </li>
-          <li>
-            <input type="radio" name="answer" id="d" class="answer" />
-            <label id="d-text" for="d"></label>
-          </li>
-        </ul>
-        <button id="submit">Submit</button>
+              <label id="a-text" for="a"></label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="b" class="answer" />
+              <label id="b-text" for="b"></label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="c" class="answer" />
+              <label id="c-text" for="c"></label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="d" class="answer" />
+              <label id="d-text" for="d"></label>
+            </li>
+          </ul>
+          <button id="submit">Submit</button>
+        </div>
       </div>
-    </div>
     </div>
     <!-- </template> -->
 
