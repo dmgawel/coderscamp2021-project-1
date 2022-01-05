@@ -1,4 +1,4 @@
-export const soundsData = [
+export default [
   {
     question: 'Do You know what movie is this music from?',
     a: 'Frozen',

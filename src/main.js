@@ -14,9 +14,12 @@ import { navSlide } from './modules/hamburger';
 
 import { actorsData } from './pages/actors';
 import { movieFramesData } from './pages/frames';
-import { soundsData } from './pages/sounds';
+import soundsData from './pages/sounds';
 
-const quiz = document.getElementById('quiz');
+// Hamburger navigation
+navSlide();
+
+const htmlBody = document.querySelector('body');
 const questionElement = document.getElementById('question');
 const answerElements = document.querySelectorAll('.answer');
 const a_text = document.getElementById('a-text');
@@ -31,18 +34,27 @@ const ul = document.querySelector('.answers');
 const soundItem = document.getElementById('sound');
 const playBtn = document.getElementById('soundtrackplay');
 
-// Choosing movie frame box and appending the photo to it
-const movieFrameBox = document.querySelector('.movieFrameBox');
-const frameImg = document.createElement('img');
-movieFrameBox.append(frameImg);
+const frameImg = document.querySelector('.movieFrameBox img');
 
 const containerToHide = document.querySelector('#containerToHide');
 const homeContainer = document.querySelector('.home-container');
 const actorsAndMovieQuestionsElements = document.querySelector('.actors-and-movie-questions-elements');
 const soundtracksQuestionsElements = document.querySelector('.soundtracks-question-elements');
 
-// Hamburger navigation
-navSlide();
+const quizzes = {
+  actors: {
+    type: 'image',
+    data: actorsData,
+  },
+  frames: {
+    type: 'image',
+    data: movieFramesData,
+  },
+  soundtracks: {
+    type: 'sound',
+    data: soundsData,
+  },
+};
 
 const quizData = {
   actors: actorsData,
@@ -51,36 +63,50 @@ const quizData = {
 };
 
 const state = {
+  currentQuiz: null,
   currentQuizData: null,
   currentQuestion: 0,
   score: 0,
+  timerInterval: null,
+  timerCounter: 10,
 };
 
 function initQuiz(name) {
+  // reset numeru pytania oraz punktów gracza
+  state.currentQuestion = 0;
+  state.score = 0;
+
   // przypisanie odpowiednich pytań
-  const questionsToBeMixed = quizData[name];
+  const questionsToBeMixed = [...quizData[name]];
 
   // pomieszanie odpowiedzi
   shuffleArray(questionsToBeMixed);
+
   state.currentQuizData = questionsToBeMixed;
+  state.currentQuiz = name;
 
   // odpalenie quizu
   loadQuiz();
 
   // rozpoczęcie timera
-  if (actorsAndMovieQuestionsElements.hidden === false) {
+  if (quizzes[state.currentQuiz].type === 'image') {
     // Add source to image on the page
-    timer();
+    startTimer();
   } // if quiz requires sound file, load it
-  else if (soundtracksQuestionsElements.hidden === false) {
+  else if (quizzes[state.currentQuiz].type === 'sound') {
     playBtn.addEventListener('click', function () {
       soundItem.play();
-      setTimeout(timer, 10000);
+      soundItem.addEventListener('ended', () => {
+        console.log('ended');
+        startTimer();
+      });
     });
   }
 }
 
 function nextQuestion() {
+  clearTimer();
+
   // sprawdzamy czy dobra odpowiedź
   const answer = selectAnswer();
 
@@ -97,22 +123,24 @@ function nextQuestion() {
   if (state.currentQuestion < state.currentQuizData.length) {
     loadQuiz();
   } else {
-    clearInterval(interval);
     endQuiz();
   }
 
   // startujemy timer
-  if (actorsAndMovieQuestionsElements.hidden === false) {
+  if (quizzes[state.currentQuiz].type === 'image') {
     // Add source to image on the page
-    timer();
+    startTimer();
   } // if quiz requires sound file, load it
-  else if (soundtracksQuestionsElements.hidden === false) {
-    let imageSrcText = window.location.origin + '/assets/timer/10.png';
-    document.getElementById('timer-image').src = imageSrcText;
+  else if (quizzes[state.currentQuiz].type === 'sound') {
+    if (state.currentQuestion < state.currentQuizData.length) {
+      const imageSrcText = window.location.origin + '/assets/timer/10.png';
+      document.getElementById('timer-image').src = imageSrcText;
+    }
     playBtn.addEventListener('click', function () {
       soundItem.play();
-      setTimeout(timer, 10000);
-      clearInterval(interval);
+      soundItem.addEventListener('ended', () => {
+        startTimer();
+      });
     });
   }
 }
@@ -188,12 +216,11 @@ function loadQuiz() {
   const loadQuizQuizData = state.currentQuizData[state.currentQuestion];
 
   // If quiz requires image, load it
-  if (actorsAndMovieQuestionsElements.hidden === false) {
+  if (quizzes[state.currentQuiz].type === 'image') {
     // Add source to image on the page
     frameImg.src = loadQuizQuizData.imgSource;
   } // if quiz requires sound file, load it
-  else if (soundtracksQuestionsElements.hidden === false) {
-    console.log(loadQuizQuizData);
+  else if (quizzes[state.currentQuiz].type === 'sound') {
     soundItem.src = loadQuizQuizData.soundSource;
   }
 
@@ -238,7 +265,9 @@ function selectAnswer() {
 }
 
 function endQuiz() {
-  quiz.innerHTML = `<div class="container-end">
+  clearTimer();
+
+  htmlBody.innerHTML = `<div class="container-end">
       <div class="table-score">
       <div>
       <h1>Your final score is: ${state.score} / ${state.currentQuizData.length}</h1>
@@ -280,6 +309,40 @@ submitBtn.addEventListener('click', nextQuestion);
 /*
   TIMER
 */
+function renderTimer() {
+  // replacing the number in the image "src" string
+  const imageSrcText = `/assets/timer/${state.timerCounter}.png`;
+
+  // replacing image "src" attribute with a new value
+  document.getElementById('timer-image').src = imageSrcText;
+}
+
+function countdownTimer() {
+  state.timerCounter--;
+
+  if (state.timerCounter === 0) {
+    nextQuestion();
+    clearTimer();
+  } else {
+    renderTimer();
+  }
+}
+
+function clearTimer() {
+  clearInterval(state.timerInterval);
+  state.timerCounter = 10;
+}
+
+function startTimer() {
+  clearTimer();
+  if (state.currentQuestion < 11) {
+    renderTimer();
+    state.timerInterval = setInterval(countdownTimer, 1000);
+  } else {
+    endQuiz();
+  }
+}
+
 // 7 images of film plates
 const TIMER_START_VALUE = 10;
 let counter = TIMER_START_VALUE;
@@ -299,33 +362,11 @@ function timer() {
   }
 }
 
-function changeTimerImage() {
-  let imageSrc = document.getElementById('timer-image').src;
-  // const index = imageSrc.lastIndexOf('.png');
-  const index = imageSrc.lastIndexOf('.png');
-
-  if (counter >= 0) {
-    // replacing the number in the image "src" string
-    let imageSrcText = window.location.origin + '/assets/timer/' + counter + '.png';
-
-    // replacing image "src" attribute with a new value
-    document.getElementById('timer-image').src = imageSrcText;
-
-    counter--;
-
-    if (counter) {
-      submitBtn.removeAttribute('disabled');
-    } else {
-      submitBtn.setAttribute('disabled', 'disabled');
-    }
-  } else {
-    clearInterval(interval);
-    nextQuestion();
-  }
-}
-
 navLinks.forEach((el) => {
   el.addEventListener('click', (e) => {
+    clearTimer();
+    renderTimer();
+
     // Remove classes
     navLinks.forEach((navLink) => {
       navLink.classList.remove('active');
@@ -333,9 +374,6 @@ navLinks.forEach((el) => {
 
     // Add active class
     e.target.classList.add('active');
-
-    state.currentQuestion = 0;
-    state.score = 0;
 
     const name = el.dataset.target;
     containerToHide.hidden = false;
