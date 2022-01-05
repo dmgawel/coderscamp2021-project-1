@@ -9,3 +9,49 @@ main {
   justify-content: center;
   align-items: center;
 }
+
+/* Dodałem te elementy tutaj bo wszystko znikało przy testowaniu JSa */
+.quiz-container > button {
+  margin: 10px;
+  background-color: transparent;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #ffd600;
+  border: 2px solid #ffd600;
+  cursor: pointer;
+}
+
+#timer-image {
+  min-width: 50px;
+}
+
+.play-button {
+  display: block;
+  align-self: center;
+}
+
+.play-button > button {
+  margin: 10px;
+  background-color: transparent;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #ffd600;
+  border: 2px solid #ffd600;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 15px;
+  background-color: black;
+  box-shadow: 0 2px black;
+}
+
+.play-button:active {
+  box-shadow: 0 2px black;
+  transform: translateY(2px);
+}
+
+.play-button > button:hover {
+  background-color: #ffd600;
+  color: black;
+}

@@ -19,6 +19,7 @@ import soundsData from './pages/sounds';
 // Hamburger navigation
 navSlide();
 
+const htmlBody = document.querySelector('body');
 const quiz = document.getElementById('quiz');
 const questionElement = document.getElementById('question');
 const answerElements = document.querySelectorAll('.answer');
@@ -72,11 +73,16 @@ const state = {
 };
 
 function initQuiz(name) {
+  // reset numeru pytania oraz punktów gracza
+  state.currentQuestion = 0;
+  state.score = 0;
+
   // przypisanie odpowiednich pytań
-  const questionsToBeMixed = quizData[name];
+  const questionsToBeMixed = [...quizData[name]];
 
   // pomieszanie odpowiedzi
   shuffleArray(questionsToBeMixed);
+
   state.currentQuizData = questionsToBeMixed;
   state.currentQuiz = name;
 
@@ -117,11 +123,11 @@ function nextQuestion() {
   }
 
   // startujemy timer
-  if (actorsAndMovieQuestionsElements.hidden === false) {
+  if (quizzes[state.currentQuiz].type === 'image') {
     // Add source to image on the page
     startTimer();
   } // if quiz requires sound file, load it
-  else if (soundtracksQuestionsElements.hidden === false) {
+  else if (quizzes[state.currentQuiz].type === 'sound') {
     let imageSrcText = window.location.origin + '/assets/timer/10.png';
     document.getElementById('timer-image').src = imageSrcText;
     playBtn.addEventListener('click', function () {
@@ -203,11 +209,11 @@ function loadQuiz() {
   const loadQuizQuizData = state.currentQuizData[state.currentQuestion];
 
   // If quiz requires image, load it
-  if (actorsAndMovieQuestionsElements.hidden === false) {
+  if (quizzes[state.currentQuiz].type === 'image') {
     // Add source to image on the page
     frameImg.src = loadQuizQuizData.imgSource;
   } // if quiz requires sound file, load it
-  else if (soundtracksQuestionsElements.hidden === false) {
+  else if (quizzes[state.currentQuiz].type === 'sound') {
     console.log(loadQuizQuizData);
     soundItem.src = loadQuizQuizData.soundSource;
   }
@@ -255,7 +261,7 @@ function selectAnswer() {
 function endQuiz() {
   clearTimer();
 
-  quiz.innerHTML = `<div class="container-end">
+  htmlBody.innerHTML = `<div class="container-end">
       <div class="table-score">
       <div>
       <h1>Your final score is: ${state.score} / ${state.currentQuizData.length}</h1>
@@ -292,9 +298,9 @@ submitBtn.addEventListener('click', nextQuestion);
 /*
   TIMER
 */
-function renderTimer () {
+function renderTimer() {
   // replacing the number in the image "src" string
-  const imageSrcText = '/assets/timer/' + state.timerCounter + '.png';
+  const imageSrcText = `/assets/timer/${state.timerCounter}.png`;
 
   // replacing image "src" attribute with a new value
   document.getElementById('timer-image').src = imageSrcText;
@@ -317,10 +323,13 @@ function clearTimer() {
 
 function startTimer() {
   clearTimer();
-  renderTimer();
-  state.timerInterval = setInterval(countdownTimer, 1000);
+  if (state.currentQuestion < 11) {
+    renderTimer();
+    state.timerInterval = setInterval(countdownTimer, 1000);
+  } else {
+    endQuiz();
+  }
 }
-
 
 // 7 images of film plates
 const TIMER_START_VALUE = 10;
@@ -341,8 +350,6 @@ function timer() {
   }
 }
 
-
-
 navLinks.forEach((el) => {
   el.addEventListener('click', (e) => {
     // Remove classes
@@ -353,9 +360,6 @@ navLinks.forEach((el) => {
     // Add active class
     e.target.classList.add('active');
 
-    state.currentQuestion = 0;
-    state.score = 0;
-    
     const name = el.dataset.target;
     containerToHide.hidden = false;
     homeContainer.hidden = true;
