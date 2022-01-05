@@ -14,15 +14,6 @@ export const actorsData = [
   },
   {
     question: 'What is the name of this actress?',
-    a: 'Zendaya',
-    b: 'Eiza Gonzales',
-    c: 'Scarlett Johansson ',
-    d: 'Katherina Zeta-Jones',
-    correct: 'c',
-    imgSource: '/assets/images/actors/Scarlett_Johansson.jpg',
-  },
-  {
-    question: 'What is the name of this actress?',
     a: 'Ashley Brooke',
     b: 'Tina Fare',
     c: 'Kelly Reilly ',
