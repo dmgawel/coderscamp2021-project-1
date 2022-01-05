@@ -66,8 +66,7 @@
     <div id="containerToHide" hidden>
       <div id="quiz" class="quiz-container">
         <h1 id="title"></h1>
-        <h2 id="question">Question text</h2>
-
+        
         <div class="soundtracks-question-elements" hidden>
           <h4>
             Please make sure your answer is correct and click "SUBMIT". <br />Otherwise your score for the question will
@@ -81,15 +80,20 @@
             </div>
           </div>
         </div>
-
+        
         <div class="actors-and-movie-questions-elements" hidden>
           <div class="movieFrameDiv">
             <div class="movieFrameBox"></div>
+            <div class="timer-box">
+              <img src="/assets/timer/10.png" alt="Timer" id="timer-image" />
+            </div>
           </div>
         </div>
-        <ul class="answers">
-          <li>
-            <input type="radio" name="answer" id="a" class="answer" />
+        <div class="content-container">
+          <h2 id="question">Question text</h2>
+          <ul class="answers">
+            <li>
+              <input type="radio" name="answer" id="a" class="answer" />
             <label id="a-text" for="a"></label>
           </li>
           <li>
@@ -106,10 +110,8 @@
           </li>
         </ul>
         <button id="submit">Submit</button>
-        <div class="timer-box">
-          <img src="/assets/timer/10.png" alt="Timer" id="timer-image" />
-        </div>
       </div>
+    </div>
     </div>
     <!-- </template> -->
 

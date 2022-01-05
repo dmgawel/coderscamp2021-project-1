@@ -6,7 +6,7 @@
 }
 
 .home-content {
-  background-color: #000000;
+  background-color: var(--black);
   border-radius: 15px;
   padding: 16px;
   width: 100%;
@@ -35,7 +35,7 @@
 
 .text-content > *:last-child {
   padding-bottom: 32px;
-  border-bottom: 4px solid #ffd600;
+  border-bottom: 4px solid var(--yellow);
   margin-bottom: 32px;
 }
 
@@ -65,8 +65,8 @@
   background-color: transparent;
   padding: 22px 32px;
   border-radius: 15px;
-  color: #ffd600;
-  border: 2px solid #ffd600;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   cursor: pointer;
 }
 
@@ -94,7 +94,7 @@
 
   .text-content > *:last-child {
     padding-bottom: 36px;
-    border-bottom: 2px solid #ffd600;
+    border-bottom: 2px solid var(--yellow);
     margin-bottom: 46px;
   }
 
