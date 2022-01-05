@@ -20,7 +20,6 @@ import soundsData from './pages/sounds';
 navSlide();
 
 const htmlBody = document.querySelector('body');
-const quiz = document.getElementById('quiz');
 const questionElement = document.getElementById('question');
 const answerElements = document.querySelectorAll('.answer');
 const a_text = document.getElementById('a-text');
@@ -97,12 +96,17 @@ function initQuiz(name) {
   else if (quizzes[state.currentQuiz].type === 'sound') {
     playBtn.addEventListener('click', function () {
       soundItem.play();
-      setTimeout(timer, 10000);
+      soundItem.addEventListener('ended', () => {
+        console.log('ended');
+        startTimer();
+      });
     });
   }
 }
 
 function nextQuestion() {
+  clearTimer();
+
   // sprawdzamy czy dobra odpowiedź
   const answer = selectAnswer();
 
@@ -128,12 +132,15 @@ function nextQuestion() {
     startTimer();
   } // if quiz requires sound file, load it
   else if (quizzes[state.currentQuiz].type === 'sound') {
-    let imageSrcText = window.location.origin + '/assets/timer/10.png';
-    document.getElementById('timer-image').src = imageSrcText;
+    if (state.currentQuestion < state.currentQuizData.length) {
+      const imageSrcText = window.location.origin + '/assets/timer/10.png';
+      document.getElementById('timer-image').src = imageSrcText;
+    }
     playBtn.addEventListener('click', function () {
       soundItem.play();
-      setTimeout(timer, 10000);
-      clearInterval(interval);
+      soundItem.addEventListener('ended', () => {
+        startTimer();
+      });
     });
   }
 }
@@ -214,7 +221,6 @@ function loadQuiz() {
     frameImg.src = loadQuizQuizData.imgSource;
   } // if quiz requires sound file, load it
   else if (quizzes[state.currentQuiz].type === 'sound') {
-    console.log(loadQuizQuizData);
     soundItem.src = loadQuizQuizData.soundSource;
   }
 
@@ -311,6 +317,7 @@ function countdownTimer() {
 
   if (state.timerCounter === 0) {
     nextQuestion();
+    clearTimer();
   } else {
     renderTimer();
   }
@@ -352,6 +359,9 @@ function timer() {
 
 navLinks.forEach((el) => {
   el.addEventListener('click', (e) => {
+    clearTimer();
+    renderTimer();
+
     // Remove classes
     navLinks.forEach((navLink) => {
       navLink.classList.remove('active');
