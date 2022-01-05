@@ -271,7 +271,7 @@ function endQuiz() {
       <div>
       <h1>Your final score is: ${state.score} / ${state.currentQuizData.length}</h1>
           <div class="buttons-container-end">
-              <button><a href="../index.html" class="btn">Go Home</a></button>
+              <button><a href="../index.html" class="btn">⭐️ Try other quizzes ⭐️</a></button>
               <h2>Share your score:</h2>
               <div class="share-btn-container">
                 <a href="#" target="_blank" class="facebook-btn">
