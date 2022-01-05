@@ -14,6 +14,7 @@ import { navSlide } from './modules/hamburger';
 
 import { actorsData } from './pages/actors';
 import { movieFramesData } from './pages/frames';
+import { soundsData } from './pages/sounds';
 
 const quiz = document.getElementById('quiz');
 const questionElement = document.getElementById('question');
@@ -26,6 +27,9 @@ const submitBtn = document.getElementById('submit');
 const navLinks = document.querySelectorAll('.js-quiz-target');
 
 const ul = document.querySelector('.answers');
+
+const soundItem = document.getElementById('sound');
+const playBtn = document.getElementById('soundtrackplay');
 
 // Choosing movie frame box and appending the photo to it
 const movieFrameBox = document.querySelector('.movieFrameBox');
@@ -43,6 +47,7 @@ navSlide();
 const quizData = {
   actors: actorsData,
   frames: movieFramesData,
+  soundtracks: soundsData,
 };
 
 const state = {
@@ -63,7 +68,16 @@ function initQuiz(name) {
   loadQuiz();
 
   // rozpoczęcie timera
-  timer();
+  if (actorsAndMovieQuestionsElements.hidden === false) {
+    // Add source to image on the page
+    timer();
+  } // if quiz requires sound file, load it
+  else if (soundtracksQuestionsElements.hidden === false) {
+    playBtn.addEventListener('click', function () {
+      soundItem.play();
+      setTimeout(timer, 10000);
+    });
+  }
 }
 
 function nextQuestion() {
@@ -88,7 +102,19 @@ function nextQuestion() {
   }
 
   // startujemy timer
-  timer();
+  if (actorsAndMovieQuestionsElements.hidden === false) {
+    // Add source to image on the page
+    timer();
+  } // if quiz requires sound file, load it
+  else if (soundtracksQuestionsElements.hidden === false) {
+    let imageSrcText = window.location.origin + '/assets/timer/10.png';
+    document.getElementById('timer-image').src = imageSrcText;
+    playBtn.addEventListener('click', function () {
+      soundItem.play();
+      setTimeout(timer, 10000);
+      clearInterval(interval);
+    });
+  }
 }
 
 /**
@@ -152,7 +178,6 @@ let wrongAnswers = [];
 
 function deselectInputs() {
   answerElements.forEach((answerEl) => {
-    // eslint-disable-next-line no-param-reassign
     answerEl.checked = false;
   });
 }
@@ -162,8 +187,16 @@ function loadQuiz() {
 
   const loadQuizQuizData = state.currentQuizData[state.currentQuestion];
 
-  // Adding source to image on the page
-  frameImg.src = loadQuizQuizData.imgSource;
+  // If quiz requires image, load it
+  if (actorsAndMovieQuestionsElements.hidden === false) {
+    // Add source to image on the page
+    frameImg.src = loadQuizQuizData.imgSource;
+  } // if quiz requires sound file, load it
+  else if (soundtracksQuestionsElements.hidden === false) {
+    console.log(loadQuizQuizData);
+    soundItem.src = loadQuizQuizData.soundSource;
+  }
+
   questionElement.innerHTML = loadQuizQuizData.question;
 
   a_text.innerHTML = loadQuizQuizData.a;
@@ -208,7 +241,7 @@ function endQuiz() {
   quiz.innerHTML = `<div class="container-end">
       <div class="table-score">
       <div>
-      <h1>Your final score is: ${state.score} / ${state.currentQuizData.length}</h1> 
+      <h1>Your final score is: ${state.score} / ${state.currentQuizData.length}</h1>
           <div class="buttons-container-end">
               <button><a href="../index.html" class="btn">Go Home</a></button>
               <h2>Share your score:</h2>
@@ -296,6 +329,9 @@ navLinks.forEach((el) => {
     // Add active class
     e.target.classList.add('active');
 
+    state.currentQuestion = 0;
+    state.score = 0;
+    
     const name = el.dataset.target;
     containerToHide.hidden = false;
     homeContainer.hidden = true;
@@ -309,11 +345,10 @@ navLinks.forEach((el) => {
 
     initQuiz(name);
     // console.log(quizData[name]);
-    console.log(name);
   });
 });
 
-/* ! do soundtrack musimy zająć się: 
+/* ! do soundtrack musimy zająć się:
 klasa soundtracks-question-elements - zdjąć hidden
 
 
