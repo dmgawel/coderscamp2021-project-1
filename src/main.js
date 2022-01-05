@@ -17,10 +17,6 @@ import { actorsData } from './pages/actors';
 import { movieFramesData } from './pages/frames';
 import soundsData from './pages/sounds';
 
-import movieNames from './data/movieNames.json';
-
-console.log(movieNames);
-
 // Hamburger navigation
 navSlide();
 
