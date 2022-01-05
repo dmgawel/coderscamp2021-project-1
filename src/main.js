@@ -23,6 +23,7 @@ const b_text = document.getElementById('b-text');
 const c_text = document.getElementById('c-text');
 const d_text = document.getElementById('d-text');
 const submitBtn = document.getElementById('submit');
+const navLinks = document.querySelectorAll('.js-quiz-target');
 
 const ul = document.querySelector('.answers');
 
@@ -285,8 +286,16 @@ function changeTimerImage() {
   }
 }
 
-document.querySelectorAll('.js-quiz-target').forEach((el) => {
-  el.addEventListener('click', () => {
+navLinks.forEach((el) => {
+  el.addEventListener('click', (e) => {
+    // Remove classes
+    navLinks.forEach((navLink) => {
+      navLink.classList.remove('active');
+    });
+
+    // Add active class
+    e.target.classList.add('active');
+
     const name = el.dataset.target;
     containerToHide.hidden = false;
     homeContainer.hidden = true;

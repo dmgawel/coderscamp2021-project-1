@@ -1,0 +1,112 @@
+@import './decorators.css';
+
+/* Home container */
+.home-container {
+  margin-top: 15px;
+}
+
+.home-content {
+  background-color: #000000;
+  border-radius: 15px;
+  padding: 16px;
+  width: 100%;
+  max-width: 1008px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Main content */
+.home-title {
+  font-size: 20px;
+  line-height: 1;
+  text-decoration: underline;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.text-content {
+  font-size: 16px;
+  line-height: 1;
+  text-align: justify;
+  color: #ffffff;
+}
+
+.text-content > *:last-child {
+  padding-bottom: 32px;
+  border-bottom: 4px solid #ffd600;
+  margin-bottom: 32px;
+}
+
+/* Choose a quiz section */
+.home-choose {
+  font-size: 20px;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 32px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.buttons-container > button {
+  text-transform: uppercase;
+  font-size: 24px;
+  line-height: 1;
+  min-width: 290px;
+  background-color: transparent;
+  padding: 22px 32px;
+  border-radius: 15px;
+  color: #ffd600;
+  border: 2px solid #ffd600;
+  cursor: pointer;
+}
+
+.buttons-container > button:hover {
+  text-decoration: underline;
+}
+
+/*             */
+/* Media 780px */
+/*             */
+@media (min-width: 780px) {
+  .home-container {
+    margin-top: 89px;
+  }
+  .home-title {
+    font-size: 48px;
+    line-height: 56px;
+    margin-bottom: 70px;
+  }
+
+  .text-content {
+    font-size: 26px;
+    line-height: 29px;
+  }
+
+  .text-content > *:last-child {
+    padding-bottom: 36px;
+    border-bottom: 2px solid #ffd600;
+    margin-bottom: 46px;
+  }
+
+  /* Choose a quiz section */
+  .home-choose {
+    font-size: 24px;
+    margin-bottom: 37px;
+  }
+
+  .buttons-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}

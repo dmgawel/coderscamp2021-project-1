@@ -1,0 +1,43 @@
+.decorator {
+  display: none;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: -1;
+}
+
+@media (min-width: 1200px) {
+  .decorator {
+    display: block;
+  }
+}
+
+.decorator-will {
+  background-image: url('../assets/images/decorators/will.png');
+  width: 274px;
+  height: 283px;
+  top: 104px;
+  right: -25px;
+}
+.decorator-note {
+  background-image: url('../assets/images/decorators/note.png');
+  width: 200px;
+  height: 285px;
+  top: 190px;
+  left: 0;
+}
+.decorator-popcorn {
+  background-image: url('../assets/images/decorators/popcorn.png');
+  width: 279px;
+  height: 358px;
+  bottom: 0;
+  left: 0;
+}
+.decorator-claps {
+  background-image: url('../assets/images/decorators/set-start.png');
+  width: 180px;
+  height: 235px;
+  bottom: 0;
+  transform: rotate(-35deg);
+  right: 0;
+}
