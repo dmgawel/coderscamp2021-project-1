@@ -17,8 +17,16 @@ import { actorsData } from './pages/actors';
 import { movieFramesData } from './pages/frames';
 import soundsData from './pages/sounds';
 
-import movieNames from './data/movieNames.json';
-console.log(movieNames);
+// import movieNames from './data/movieNames.json';
+// console.log(movieNames);
+
+// function randomMovie(movieNames) {
+//   return movieNames[Math.floor(Math.random() * movieNames.length)];
+// }
+
+// const randomMovieName = randomMovie(movieNames);
+// const randomizeMovieNames = movieNames.sort(() => Math.random() - 0.5);
+// console.log(randomizeMovieNames);
 
 // Hamburger navigation
 navSlide();
