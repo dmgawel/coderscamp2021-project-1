@@ -98,7 +98,6 @@ function initQuiz(name) {
     playBtn.addEventListener('click', function () {
       soundItem.play();
       soundItem.addEventListener('ended', () => {
-        console.log('ended');
         startTimer();
       });
     });
@@ -365,6 +364,8 @@ function pauseSoundtrack() {
 
 navLinks.forEach((el) => {
   el.addEventListener('click', (e) => {
+    document.querySelector('.navigation-list').classList.remove('navigation-list-active');
+    document.querySelector('.burger').classList.remove('toggle');
     clearTimer();
     renderTimer();
     pauseSoundtrack();
