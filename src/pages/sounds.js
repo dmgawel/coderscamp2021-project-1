@@ -78,7 +78,7 @@ export default [
     a: movieNames[24],
     b: movieNames[25],
     c: movieNames[26],
-    d: 'Master Thaddeus: The Last Foray in Lithuania',
+    d: 'Master Thaddeus',
     correct: 'd',
     soundSource: '/assets/sounds/panTadeusz.mp3',
   },
