@@ -8,34 +8,35 @@
   height: 80vh;
 }
 
-.actor-container {
+.movieFrameDiv {
   flex-direction: column;
 }
 
 .answers {
   display: flex;
   flex-flow: column nowrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   list-style-type: none;
 }
 
 .answers > li {
+  width: 100%;
   padding: 10px;
   text-align: left;
   margin: 10px;
-  background-color: #000000;
+  background-color: var(--black);
   padding: 1rem 2rem;
   border-radius: 15px;
   text-decoration: none;
-  color: #ffd600;
-  border: 2px solid #ffd600;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   cursor: pointer;
 }
 
 .answers > li:hover {
-  background-color: #ffd600;
-  color: black;
+  background-color: var(--yellow);
+  color: var(--black);
 }
 
 input[type='radio'] {
@@ -48,22 +49,21 @@ input[type='radio'] + label {
   margin-bottom: 0px;
   font-size: 1.5rem;
   line-height: 20px;
-  color: #ffffff;
+  color: var(--white);
   border-radius: 15px;
   text-align: center;
   cursor: pointer;
-  background-color: black;
-  background-repeat: repeat-x;
-  border: #ffd600;
-  border-color: #ffd600;
-  border-bottom-color: #ffd600;
 }
 
 input[type='radio']:checked + label {
-  background-image: none;
-  color: black;
-  outline: 0;
-  background-color: #ffd600;
+  color: var(--black);
+  background-color: var(--yellow);
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .content-container > h2 {
@@ -77,56 +77,66 @@ input[type='radio']:checked + label {
   padding: 1rem 2rem;
   border-radius: 15px;
   text-decoration: none;
-  color: #ffd600;
-  border: 2px solid #ffd600;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   cursor: pointer;
 }
 
 .content-container > button:hover {
-  background-color: #ffd600;
-  color: black;
+  background-color: var(--yellow);
+  color: var(--black);
 }
 
-.actor-image > img {
-  width: 500px;
-  max-height: 500px;
+.movieFrameBox > img {
+  width: 450px;
+  height: 450px;
   border-radius: 10px;
+  margin-left: 3rem;
+  border: 2px solid var(--yellow);
+}
+
+.timer-box > img {
+  width: 239.4px;
+  height: 180px;
+  border-radius: 10px;
+  margin-top: 1rem;
+  border: 2px solid var(--yellow);
 }
 
 /* MEDIA  */
-@media screen and (max-width: 1225px) {
+@media screen and (max-width: 1360px) {
   .quiz-container {
     width: 95%;
   }
 
-  .actor-image > img {
+  .movieFrameBox > img {
     width: 430px;
-    max-height: 430px;
+    height: 430px;
     border-radius: 10px;
   }
 
   .timer-box > img {
-    width: 150px;
-    max-height: 150px;
+    width: 199.5px;
+    height: 150px;
     border-radius: 10px;
+  }
+
+  .answers > li {
+    width: 80%;
+    text-align: center;
   }
 }
 
-@media screen and (max-width: 780px) {
-  .quiz-container {
-    flex-direction: column;
-  }
-
-  .actor-image > img {
-    margin-top: 10px;
-    width: 240px;
-    max-height: 240px;
+@media screen and (max-width: 1000px) {
+  .movieFrameBox > img {
+    width: 400px;
+    height: 380px;
     border-radius: 10px;
   }
 
   .timer-box > img {
-    width: 130px;
-    max-height: 130px;
+    width: 133px;
+    height: 100px;
     border-radius: 10px;
   }
 
@@ -135,10 +145,98 @@ input[type='radio']:checked + label {
   }
 
   .answers > li {
+    margin: 7px;
+  }
+
+  input[type='radio'] + label {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .quiz-container {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .movieFrameDiv {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .movieFrameBox > img {
+    width: 240px;
+    height: 240px;
+    margin-left: 0;
+  }
+
+  .timer-box {
+    display: flex;
+    align-items: end;
+    margin-left: 1rem;
+  }
+
+  .timer-box > img {
+    width: 106px;
+    height: 80px;
+  }
+
+  .content-container > h2 {
+    font-size: 1.7rem;
+  }
+
+  .answers > li {
     margin: 5px;
   }
 
   input[type='radio'] + label {
     font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .quiz-container {
+    flex-direction: column;
+  }
+
+  .movieFrameDiv {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .movieFrameBox > img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .timer-box {
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+  }
+
+  .timer-box > img {
+    width: 52px;
+    height: 40px;
+  }
+
+  .content-container > h2 {
+    font-size: 1rem;
+  }
+
+  .answers > li {
+    margin: 0.1rem;
+    width: 100%;
+  }
+
+  input[type='radio'] + label {
+    font-size: 0.8rem;
+    padding: 0.1rem 0.1rem;
+    line-height: 0.3rem;
+  }
+
+  .content-container > button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
   }
 }
