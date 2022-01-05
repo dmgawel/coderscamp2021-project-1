@@ -2,13 +2,17 @@ import fs from 'fs';
 
 import fetch from 'node-fetch';
 
-const response = await fetch(
-  `https://api.themoviedb.org/3/movie/top_rated?api_key=5494c3aa84c3dc8ee3abdbca31b17bd6&language=en-US&page=1`
-);
-const data = await JSON.stringify(response);
+let data;
+let allData = [];
+let pageNumber = 1;
+while (pageNumber < 5) {
+  pageNumber++;
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=5494c3aa84c3dc8ee3abdbca31b17bd6&language=en-US&page=${pageNumber}`
+  );
+  data = await response.json();
+  allData = [...allData, data];
+  console.log(allData);
+}
 
-fs.writeFileSync('./data.json', data);
-
-console.log(data);
-
-// api_key=e0add4835a4a4c34f08aeb4c32425f01
+// fs.writeFileSync('./data.json', data);
