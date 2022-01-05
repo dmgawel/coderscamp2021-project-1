@@ -45,9 +45,9 @@ Klient dostarczył zespołowi listę funkcjonalności:
 
 3. Czas na udzielenie odpowiedzi w każdym trybie quizu jest odmierzany za pomocą zmieniających się zobrazowanych klatek taśmy filmowej i wynosi 10 sekund, przy czym w trybie Soundtracks czas na udzielenie odpowiedzi liczony jest dopiero od momentu zakończenia odsłuchiwania przykładu muzycznego.
 
-4. Zatwierdzenie prawidłowej odpowiedzi w wyznaczonym czasie skutkuje przyznaniem 1 punktu (per-analogiam zatwierdzenie nieprawidłowej odpowiedzi - 0 punktów).
+4. Udzielenie prawidłowej odpowiedzi w wyznaczonym czasie skutkuje przyznaniem 1 punktu (per-analogiam nieprawidłowa odpowiedź = 0 punktów).
 
-5. W przypadku braku odpowiedzi bądź jej niezatwierdzenia w wyznaczonym czasie, punkt nie zostaje przyznany i zostaje wyświetlone kolejne pytanie.
+5. W przypadku braku odpowiedzi, punkt nie zostaje przyznany i zostaje wyświetlone kolejne pytanie.
 
 6. W każdej kategorii quizu pula pytań wynosi 10.
 
